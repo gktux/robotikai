@@ -192,6 +192,40 @@ body {
   animation: autonomous-glow 12s ease-in-out infinite;
 }
 
+/* Blog Content Dark Mode Fix */
+/* Reset ALL forced dark colors from rich text editors in dark mode */
+.dark .markdown-container :is(span, p, h1, h2, h3, h4, h5, h6, li, strong, em)[style*="color: rgb(0, 0, 0)"],
+.dark .markdown-container :is(span, p, h1, h2, h3, h4, h5, h6, li, strong, em)[style*="color:rgb(0,0,0)"],
+.dark .markdown-container :is(span, p, h1, h2, h3, h4, h5, h6, li, strong, em)[style*="color: #000"],
+.dark .markdown-container :is(span, p, h1, h2, h3, h4, h5, h6, li, strong, em)[style*="color:#000"],
+.dark .markdown-container :is(span, p, h1, h2, h3, h4, h5, h6, li, strong, em)[style*="color: black"] {
+  color: #e2e8f0 !important; /* slate-200 */
+}
+
+/* Fix for nested elements that might inherit dark color */
+.dark .markdown-container * {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Ensure headings are prominent in dark mode */
+.dark .markdown-container :is(h1, h2, h3, h4) {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+/* Ensure images don't overflow and look good */
+.markdown-container img {
+  max-width: 100%;
+  height: auto;
+  margin: 2.5rem auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .markdown-container img {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 /* Swiper Slider Adjustments */
 .announcement-slider-container .swiper-button-next,
 .announcement-slider-container .swiper-button-prev {
