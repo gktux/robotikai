@@ -248,5 +248,27 @@
         "isImportant": false
       }
     ]
+  },
+  "partners": {
+    "items": [
+      {
+        "id": 1,
+        "name": "Samsun Teknopark",
+        "logo": "https://www.samsunteknopark.com/templates/teknopark/images/logo.png",
+        "link": "https://www.samsunteknopark.com"
+      },
+      {
+        "id": 2,
+        "name": "Ondokuz Mayıs Üniversitesi",
+        "logo": "https://www.omu.edu.tr/sites/default/files/omu_logo_yenii.png",
+        "link": "https://www.omu.edu.tr"
+      },
+      {
+        "id": 3,
+        "name": "TÜBİTAK",
+        "logo": "https://www.tubitak.gov.tr/sites/default/files/tubitak_logo.png",
+        "link": "https://www.tubitak.gov.tr"
+      }
+    ]
   }
 }

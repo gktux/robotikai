@@ -111,6 +111,14 @@ export type CmsData = {
       isImportant?: boolean;
     }[];
   };
+  partners: {
+    items: {
+      id: number;
+      name: string;
+      logo: string;
+      link?: string;
+    }[];
+  };
 };
 
 export async function getLocale(): Promise<Locale> {
@@ -179,6 +187,10 @@ export function writeCms(partial: Partial<CmsData>, locale: Locale = "tr") {
     announcements: {
       ...current.announcements,
       ...(partial.announcements ?? {}),
+    },
+    partners: {
+      ...current.partners,
+      ...(partial.partners ?? {}),
     },
   };
 

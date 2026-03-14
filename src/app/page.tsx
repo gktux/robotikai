@@ -244,6 +244,68 @@ export default async function Home() {
       )}
 
 
+      {/* Sponsorlar & Çözüm Ortakları - Innovative Section */}
+      {cms.partners?.items?.length > 0 && (
+        <section className="relative py-24 overflow-hidden -mt-10">
+          {/* Animated Background Mesh */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-fuchsia-500/10 blur-[120px] rounded-full animate-mesh" />
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 blur-[120px] rounded-full animate-mesh [animation-delay:-5s]" />
+          </div>
+
+          <div className="mx-auto max-w-6xl px-4 relative">
+            <header className="mb-16 text-center space-y-4">
+              <div className="inline-flex rounded-full bg-slate-950/5 px-4 py-1.5 dark:bg-white/5 backdrop-blur-md border border-slate-200 dark:border-white/10">
+                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Çözüm Ortaklarımız</p>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tighter">
+                Gücümüzü <span className="shimmer-text">Partnerlerimizden</span> Alıyoruz
+              </h2>
+            </header>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {cms.partners.items.map((partner: any, idx: number) => {
+                const Item = (
+                  <div 
+                    className="group relative h-40 flex items-center justify-center rounded-[2.5rem] bg-white/40 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-200/50 dark:border-white/5 transition-all duration-500 hover:bg-white dark:hover:bg-slate-900 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2"
+                  >
+                    <div className="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-indigo-500/5 via-transparent to-fuchsia-500/5" />
+                    
+                    {/* Glass Reflection effect on hover */}
+                    <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden rounded-[2.5rem]">
+                      <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent skew-x-[45deg] transition-all duration-700 group-hover:left-[150%]" />
+                    </div>
+
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="max-h-16 max-w-[70%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-105"
+                    />
+                    
+                    {/* Tooltip-like name label */}
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                      <div className="bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full whitespace-nowrap shadow-lg">
+                        {partner.name}
+                      </div>
+                    </div>
+                  </div>
+                );
+
+                return partner.link ? (
+                  <a key={idx} href={partner.link} target="_blank" rel="noopener noreferrer" className="animate-fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                    {Item}
+                  </a>
+                ) : (
+                  <div key={idx} className="animate-fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                    {Item}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Features / Bento Grid */}
       <section className="relative overflow-hidden py-24 transition-colors duration-300">
         <div className="mx-auto max-w-6xl px-4">

@@ -49,6 +49,12 @@ export default function AdminDashboardPlaceholder() {
             >
               Duyurular
             </Link>
+            <Link
+              href="/admin/partners"
+              className="rounded-full bg-fuchsia-500 px-3 py-1 text-[11px] font-semibold text-white dark:bg-fuchsia-600"
+            >
+              Sponsorlar
+            </Link>
           </div>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
