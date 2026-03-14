@@ -1,0 +1,215 @@
+{
+  "site": {
+    "brandName": "ROBOTIKAI",
+    "tagline": "Arduino & Robotik Akademi",
+    "footerLine1": "Arduino & Robotik Eğitim Platformu",
+    "footerLine2": "Blog, eğitim ve kit satış altyapısı."
+  },
+  "home": {
+    "badge": "ROBOTIKAI • Arduino & Kodlama Eğitim Platformu",
+    "titleLine1": "ROBOTIKAI ile",
+    "titleHighlight": "robotik ve yazılıma hükmet.",
+    "subtitle": "Arduino, elektronik ve yazılım eğitimleri, hazır kitler ve blog içerikleri tek çatı altında. Hem öğren, hem projeni kur, hem de ihtiyacın olan donanımı ROBOTIKAI üzerinden satın al.",
+    "pill1Title": "Arduino Atölyeleri",
+    "pill1Text": "Yeni başlayanlar ve ileri seviye için modüller.",
+    "pill2Title": "Projeye Hazır Kitler",
+    "pill2Text": "Robotik projeler için hazır setler ve sensörler.",
+    "cardTitle": "Canlı Devre Simülasyonu",
+    "cardModTitle": "Arduino Başlangıç",
+    "cardModText": "LED, buton, sensör temel devreleri.",
+    "cardDuration": "6 Hafta",
+    "cardDurationText": "%100 online & uygulamalı.",
+    "cardLevel": "0→1",
+    "cardLevelText": "Hiç bilmeyen için tasarlandı.",
+    "cardBottomText": "Gerçek kitler ile öğrenme deneyimi.",
+    "cardBottomBadge": "ROBOTIKAI Labs",
+    "cardNote": "Bu alan temsili. Kendi logonu ve görsellerini admin paneli tarafına geçtiğimizde kolayca değiştirebileceksin.",
+    "features": [
+      {
+        "title": "Kapsamlı İçerik",
+        "description": "Sıfırdan ileri seviyeye kadar yüzlerce saatlik video ve yazılı eğitim."
+      },
+      {
+        "title": "Pratik Kitler kapınıza gelsin",
+        "description": "İzleyerek değil, dokunarak öğrenin. İhtiyacınız olan donanım bizden."
+      },
+      {
+        "title": "Canlı Destek",
+        "description": "Takıldığınız yerde uzman eğitmenlerimize anında ulaşın ve sorununuzu çözün."
+      }
+    ],
+    "steps": [
+      {
+        "number": "01",
+        "title": "Eğitimini Seç",
+        "description": "Seviyene ve hedefine en uygun olan kursu belirle."
+      },
+      {
+        "number": "02",
+        "title": "Kitini Edindir",
+        "description": "Teoriyi pratiğe dökmek için gerekli donanımı mağazamızdan sepetine ekle."
+      },
+      {
+        "number": "03",
+        "title": "Geliştirmeye Başla",
+        "description": "Eş zamanlı canlı yayınlar ve video arşivleriyle projeni hayata geçir."
+      }
+    ],
+    "cta": {
+      "title": "Hayalindeki projeyi erteleme.",
+      "subtitle": "Binlerce öğrenci ve maker arasına katıl, bugün üretmeye başla.",
+      "buttonPri": "Eğitimleri Keşfet",
+      "buttonSec": "Mağazaya Git"
+    }
+  },
+  "about": {
+    "title": "ROBOTIKAI nedir?",
+    "paragraphs": [
+      "ROBOTIKAI, Arduino, robotik ve yazılım alanında hem eğitim, hem de donanım ihtiyaçlarını aynı çatı altında toplayan bir platform olarak tasarlandı. Öğrenciler, öğretmenler ve meraklılar için uygulamalı içerikler sunmayı hedefliyoruz.",
+      "Platform yapısı; online eğitimler, projeye hazır kitler, blog yazıları, etkinlik duyuruları ve güçlü bir admin paneli üzerine kuruludur. Böylece hem içerikleri hem de ürünleri tek bir yerden yönetebilirsin.",
+      "Bu sayfa şu an tanıtım amaçlıdır. İleride misyon, vizyon, eğitmen ekibi, iş birlikleri gibi bölümleri admin paneli üzerinden dinamik hale getirebilirsin."
+    ]
+  },
+  "contact": {
+    "intro": "Eğitimler, kurumsal işbirlikleri veya toplu kit alımları için aşağıdaki formu doldurabilir ya da iletişim bilgilerini kullanabilirsin.",
+    "infoText": "Buradaki bilgiler placeholder. Kendi adresini, telefonunu ve e-posta adresini admin panelinden yönetilebilir yapacağız.",
+    "email": "info@robotikai.com",
+    "phone": "+90 (000) 000 00 00",
+    "address": "İstanbul / Türkiye (örn. eğitim ofisi)"
+  },
+  "courses": {
+    "badge": "ROBOTIKAI • Eğitimler",
+    "title": "Arduino, robotik ve kodlama eğitimleri",
+    "intro": "Sıfırdan başlayanlar için temel eğitimlerden, proje odaklı ileri seviye modüllere kadar tüm eğitim içeriklerinizi burada listeleyeceğiz. Şimdilik örnek kurslar görüyorsun; admin paneli geldiğinde bunları panelden yönetebileceksin.",
+    "items": [
+      {
+        "id": 1,
+        "title": "Arduino 0'dan 1'e Başlangıç",
+        "level": "Başlangıç",
+        "duration": "6 Hafta",
+        "highlight": "LED, buton, sensör temelleri.",
+        "content": "Bu eğitimde Arduino kartını tanıyacak, breadboard üzerinde LED, buton ve sensör devreleri kuracak, temel C kodları yazacaksın. Toplam 6 hafta boyunca haftalık canlı dersler ve uygulama videoları ile sıfırdan başlayanlar için tasarlandı."
+      },
+      {
+        "id": 2,
+        "title": "Orta Seviye Robotik Projeler",
+        "level": "Orta",
+        "duration": "8 Hafta",
+        "highlight": "Çizgi izleyen, engelden kaçan robotlar.",
+        "content": "Çizgi izleyen ve engelden kaçan robot projelerini adım adım gerçekleştireceksin. Motor sürücüler, ultrasonik sensörler ve PID kontrol mantığı üzerine odaklanacağız. Proje bazlı, uygulamalı bir program."
+      },
+      {
+        "id": 3,
+        "title": "Arduino ile IoT ve Bulut",
+        "level": "İleri",
+        "duration": "4 Hafta",
+        "highlight": "WiFi, MQTT ve bulut dashboard'lar.",
+        "content": "ESP8266/ESP32 ile WiFi üzerinden veri gönderme, MQTT protokolü ve bulut dashboard entegrasyonu. Akıllı ev ve uzaktan izleme projeleri için gerekli tüm araçlar."
+      },
+      {
+        "id": 4,
+        "title": "deneme",
+        "level": "demee",
+        "duration": "snewwm",
+        "highlight": "swnwmw",
+        "content": ""
+      }
+    ]
+  },
+  "shop": {
+    "badge": "ROBOTIKAI • Ürünler",
+    "title": "Arduino kitleri ve robotik bileşenler",
+    "intro": "Eğitimlerle entegre çalışan, projeye hazır setler ve sensörler. Şimdilik örnek ürünler görüyorsun; gerçek ürünleri admin panelinden ekleyip yöneteceksin.",
+    "items": [
+      {
+        "id": 1,
+        "name": "ROBOTIKAI Başlangıç Arduino Kiti",
+        "price": "1.299 ₺",
+        "priceValue": 1299,
+        "image": "",
+        "tag": "Başlangıç",
+        "info": "LED, direnç, buton, buzzer ve temel sensörlerle tam set.",
+        "description": "Arduino Uno R3, breadboard, jumper kablolar, LED'ler, dirençler, butonlar, buzzer, LDR ve ısı sensörü içeren tam başlangıç seti. Eğitimlerle uyumlu çalışır."
+      },
+      {
+        "id": 2,
+        "name": "Çizgi İzleyen Robot Kiti",
+        "price": "1.899 ₺",
+        "priceValue": 1899,
+        "image": "",
+        "tag": "Proje",
+        "info": "Motor sürücü, DC motorlar, çizgi sensörleri ve gövde.",
+        "description": "L298N motor sürücü, 2 adet DC motor, 3 sensörlü çizgi izleyen modülü ve hazır şasi ile hemen montaj yapıp kodlamaya geçebilirsin."
+      },
+      {
+        "id": 3,
+        "name": "Akıllı Ev IoT Kiti",
+        "price": "2.499 ₺",
+        "priceValue": 2499,
+        "image": "",
+        "tag": "IoT",
+        "info": "WiFi modülü, röle kartı, ısı/nem sensörü, ışık sensörü.",
+        "description": "ESP8266 NodeMCU, 4 kanallı röle modülü, DHT22 ısı/nem sensörü ve LDR. Akıllı ev ve uzaktan kontrol projeleri için hazır set."
+      },
+      {
+        "id": 4,
+        "name": "deneme ürünü",
+        "price": "4500",
+        "priceValue": 4500,
+        "image": "",
+        "tag": "lot",
+        "info": "deneme",
+        "description": ""
+      }
+    ]
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "intro": "Arduino, eğitimler ve siparişler hakkında merak ettikleriniz.",
+    "items": [
+      {
+        "id": 1,
+        "question": "Arduino kiti siparişim ne zaman kargoya verilir?",
+        "answer": "Siparişiniz onaylandıktan sonra 1-2 iş günü içinde kargoya verilir. Kargo takip numarası e-posta ile gönderilir."
+      },
+      {
+        "id": 2,
+        "question": "Eğitimlere nasıl kayıt olabilirim?",
+        "answer": "İlgili eğitim sayfasındaki kayıt butonuna tıklayarak veya bizimle iletişim formu üzerinden iletişime geçebilirsiniz."
+      },
+      {
+        "id": 3,
+        "question": "Ödemede hangi yöntemler kabul ediliyor?",
+        "answer": "Kredi kartı ve banka kartı ile güvenli ödeme altyapısı üzerinden ödeme yapabilirsiniz."
+      }
+    ]
+  },
+  "blog": {
+    "badge": "ROBOTIKAI • Blog",
+    "title": "Arduino, robotik ve kodlama üzerine yazılar",
+    "intro": "Eğitim içeriklerini destekleyen teknik makaleler, proje anlatımları ve tavsiyeler. Şimdilik örnek yazılar görüyorsun; gerçek blog yazılarını admin panelinden ekleyeceksin.",
+    "items": [
+      {
+        "id": 1,
+        "title": "Arduino Nedir? En Temelden Anlatım",
+        "category": "Arduino Temel",
+        "excerpt": "Arduino kart yapısı, pinler, besleme ve temel bileşenler hakkında sade bir giriş.",
+        "content": "Arduino, açık kaynak bir elektronik geliştirme platformudur. Mikrodenetleyici tabanlı kartlar, kolay programlama ortamı ve çok sayıda sensör/motor ile uyumlu kütüphane sayesinde robotik ve IoT projelerini hızlıca hayata geçirebilirsin. Bu yazıda pinler, besleme ve temel bileşenler hakkında sade bir giriş sunuyoruz."
+      },
+      {
+        "id": 2,
+        "title": "Çizgi İzleyen Robot Nasıl Çalışır?",
+        "category": "Robotik Projeler",
+        "excerpt": "Sensör yerleşimi, hız ayarı, PID mantığı ve örnek kod akışını konuşuyoruz.",
+        "content": "Çizgi izleyen robotlar, zemin üzerindeki çizgiyi algılayan sensörler sayesinde otonom hareket eder. Sensör yerleşimi, motor hız ayarı ve PID kontrol mantığı kritik parametrelerdir. Bu yazıda adım adım örnek kod ve hata ayıklama ipuçları bulacaksın."
+      },
+      {
+        "id": 3,
+        "title": "Öğrenciler İçin En Faydalı 5 Arduino Projesi",
+        "category": "Eğitim",
+        "excerpt": "Okullarda ve kurslarda en çok kullanılan, öğrenmeyi hızlandıran proje fikirleri.",
+        "content": "LED yanıp sönme, trafik lambası, park sensörü, sıcaklık monitörü ve basit robot kolu gibi projeler hem eğlenceli hem de öğretici. Her biri farklı konseptleri pekiştirir: zamanlama, sensör okuma, motor kontrol ve mantıksal kararlar."
+      }
+    ]
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "site": {
+    "brandName": "ROBOTIKAI",
+    "tagline": "Arduino & Robotics Academy",
+    "footerLine1": "Arduino & Robotics Education Platform",
+    "footerLine2": "Blog, education, and kit sales infrastructure."
+  },
+  "home": {
+    "badge": "ROBOTIKAI • Arduino & Coding Education Platform",
+    "titleLine1": "Master robotics and software",
+    "titleHighlight": "with ROBOTIKAI.",
+    "subtitle": "Arduino, electronics and software courses, ready-to-use kits, and blog content all under one roof. Learn, build your project, and buy the hardware you need directly through ROBOTIKAI.",
+    "pill1Title": "Arduino Workshops",
+    "pill1Text": "Modules for beginners and advanced levels.",
+    "pill2Title": "Project-Ready Kits",
+    "pill2Text": "Ready-made sets and sensors for robotics projects.",
+    "cardTitle": "Live Circuit Simulation",
+    "cardModTitle": "Arduino Beginner",
+    "cardModText": "Basic circuits for LEDs, buttons, and sensors.",
+    "cardDuration": "6 Weeks",
+    "cardDurationText": "100% online & practical.",
+    "cardLevel": "0→1",
+    "cardLevelText": "Designed for absolute beginners.",
+    "cardBottomText": "Learning experience with real kits.",
+    "cardBottomBadge": "ROBOTIKAI Labs",
+    "cardNote": "This area is representational. You will be able to easily change your logo and images when we move to the admin panel side.",
+    "features": [
+      {
+        "title": "Comprehensive Content",
+        "description": "Hundreds of hours of video and written tutorials from scratch to advanced level."
+      },
+      {
+        "title": "Practical Kits Delivered to Your Door",
+        "description": "Don't just watch, learn by touching. We provide the hardware you need."
+      },
+      {
+        "title": "Live Support",
+        "description": "Reach out to our expert instructors instantly whenever you are stuck and solve your problem."
+      }
+    ],
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choose Your Course",
+        "description": "Determine the course that best fits your level and goals."
+      },
+      {
+        "number": "02",
+        "title": "Get Your Kit",
+        "description": "Add the necessary hardware from our store to your cart to turn theory into practice."
+      },
+      {
+        "number": "03",
+        "title": "Start Developing",
+        "description": "Bring your project to life with simultaneous live streams and video archives."
+      }
+    ],
+    "cta": {
+      "title": "Don't delay your dream project.",
+      "subtitle": "Join thousands of students and makers, start creating today.",
+      "buttonPri": "Discover Courses",
+      "buttonSec": "Go to Store"
+    }
+  },
+  "about": {
+    "title": "What is ROBOTIKAI?",
+    "paragraphs": [
+      "ROBOTIKAI was designed as a platform that gathers both education and hardware needs under the same roof in the field of Arduino, robotics, and software. We aim to provide practical content for students, teachers, and enthusiasts.",
+      "The platform structure is built upon online courses, project-ready kits, blog posts, event announcements, and a powerful admin panel. Thus, you can manage both content and products from a single place.",
+      "This page is currently for promotional purposes. In the future, you can make sections like mission, vision, instructor team, collaborations dynamic via the admin panel."
+    ]
+  },
+  "contact": {
+    "intro": "For courses, corporate collaborations, or bulk kit purchases, you can fill out the form below or use our contact information.",
+    "infoText": "The information here is a placeholder. We will make your address, phone, and e-mail address manageable from the admin panel.",
+    "email": "info@robotikai.com",
+    "phone": "+90 (000) 000 00 00",
+    "address": "Istanbul / Turkey (e.g. education office)"
+  },
+  "courses": {
+    "badge": "ROBOTIKAI • Courses",
+    "title": "Arduino, robotics, and coding courses",
+    "intro": "We will list all your educational content here, from basic courses for beginners to project-oriented advanced modules. You are seeing sample courses for now; you will be able to manage these from the panel when the admin panel arrives.",
+    "items": [
+      {
+        "id": 1,
+        "title": "Arduino 0 to 1 Beginner",
+        "level": "Beginner",
+        "duration": "6 Weeks",
+        "highlight": "Fundamentals of LEDs, buttons, and sensors.",
+        "content": "In this training, you will get to know the Arduino board, build LED, button, and sensor circuits on a breadboard, and write basic C codes. Designed for beginners with weekly live lessons and application videos for a total of 6 weeks."
+      },
+      {
+        "id": 2,
+        "title": "Intermediate Robotics Projects",
+        "level": "Intermediate",
+        "duration": "8 Weeks",
+        "highlight": "Line following, obstacle avoiding robots.",
+        "content": "You will realize line following and obstacle avoiding robot projects step by step. We will focus on motor drivers, ultrasonic sensors, and PID control logic. A project-based, practical program."
+      },
+      {
+        "id": 3,
+        "title": "IoT and Cloud with Arduino",
+        "level": "Advanced",
+        "duration": "4 Weeks",
+        "highlight": "WiFi, MQTT, and cloud dashboards.",
+        "content": "Sending data over WiFi with ESP8266/ESP32, MQTT protocol, and cloud dashboard integration. All the necessary tools for smart home and remote monitoring projects."
+      },
+      {
+        "id": 4,
+        "title": "test",
+        "level": "test",
+        "duration": "test",
+        "highlight": "test",
+        "content": ""
+      }
+    ]
+  },
+  "shop": {
+    "badge": "ROBOTIKAI • Products",
+    "title": "Arduino kits and robotics components",
+    "intro": "Project-ready sets and sensors that work integrated with the trainings. You are seeing sample products for now; you will add and manage actual products from the admin panel.",
+    "items": [
+      {
+        "id": 1,
+        "name": "ROBOTIKAI Beginner Arduino Kit",
+        "price": "1,299 ₺",
+        "priceValue": 1299,
+        "image": "",
+        "tag": "Beginner",
+        "info": "Complete set with LEDs, resistors, buttons, buzzer, and basic sensors.",
+        "description": "A complete starter set including Arduino Uno R3, breadboard, jumper cables, LEDs, resistors, buttons, buzzer, LDR, and temperature sensor. Works compatibly with the trainings."
+      },
+      {
+        "id": 2,
+        "name": "Line Following Robot Kit",
+        "price": "1,899 ₺",
+        "priceValue": 1899,
+        "image": "",
+        "tag": "Project",
+        "info": "Motor driver, DC motors, line sensors, and chassis.",
+        "description": "With L298N motor driver, 2 DC motors, 3-sensor line follower module, and ready chassis, you can immediately assemble and start coding."
+      },
+      {
+        "id": 3,
+        "name": "Smart Home IoT Kit",
+        "price": "2,499 ₺",
+        "priceValue": 2499,
+        "image": "",
+        "tag": "IoT",
+        "info": "WiFi module, relay board, temp/humidity sensor, light sensor.",
+        "description": "ESP8266 NodeMCU, 4-channel relay module, DHT22 temp/humidity sensor, and LDR. Ready set for smart home and remote control projects."
+      },
+      {
+        "id": 4,
+        "name": "test product",
+        "price": "4500",
+        "priceValue": 4500,
+        "image": "",
+        "tag": "lot",
+        "info": "test",
+        "description": ""
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "intro": "What you wonder about Arduino, courses, and orders.",
+    "items": [
+      {
+        "id": 1,
+        "question": "When will my Arduino kit order be shipped?",
+        "answer": "Your order will be shipped within 1-2 business days after it is confirmed. The tracking number will be sent via e-mail."
+      },
+      {
+        "id": 2,
+        "question": "How can I register for the courses?",
+        "answer": "You can register by clicking the register button on the relevant course page or by contacting us via our contact form."
+      },
+      {
+        "id": 3,
+        "question": "Which payment methods are accepted?",
+        "answer": "You can pay with credit card and debit card via our secure payment infrastructure."
+      }
+    ]
+  },
+  "blog": {
+    "badge": "ROBOTIKAI • Blog",
+    "title": "Articles on Arduino, robotics, and coding",
+    "intro": "Technical articles, project descriptions, and advice supporting the educational content. You are seeing sample articles for now; you will add actual blog posts from the admin panel.",
+    "items": [
+      {
+        "id": 1,
+        "title": "What is Arduino? Explained from Scratch",
+        "category": "Arduino Basic",
+        "excerpt": "A simple introduction to the Arduino board structure, pins, power supply, and basic components.",
+        "content": "Arduino is an open-source electronics development platform. Thanks to microcontroller-based boards, an easy programming environment, and a library compatible with many sensors/motors, you can quickly bring robotics and IoT projects to life. In this article, we offer a simple introduction to pins, power supply, and basic components."
+      },
+      {
+        "id": 2,
+        "title": "How Does a Line Following Robot Work?",
+        "category": "Robotics Projects",
+        "excerpt": "We discuss sensor placement, speed adjustment, PID logic, and example code flow.",
+        "content": "Line following robots move autonomously thanks to sensors that detect the line on the floor. Sensor placement, motor speed adjustment, and PID control logic are critical parameters. In this article, you will find step-by-step example code and debugging tips."
+      },
+      {
+        "id": 3,
+        "title": "Top 5 Most Useful Arduino Projects for Students",
+        "category": "Education",
+        "excerpt": "Project ideas most commonly used in schools and courses that accelerate learning.",
+        "content": "Projects like LED blinking, traffic light, parking sensor, temperature monitor, and simple robotic arm are both fun and instructive. Each reinforces different concepts: timing, sensor reading, motor control, and logical decisions."
+      }
+    ]
+  }
+}
