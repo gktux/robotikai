@@ -5,7 +5,9 @@ import { cookies } from "next/headers";
 export type Locale = "tr" | "en";
 
 function getFilePath(locale: Locale = "tr") {
-  return path.join(process.cwd(), "data", `cms_${locale}.json`);
+  // Security: Prevent path traversal by ensuring locale is strictly limited to allowed values
+  const safeLocale = locale === "en" ? "en" : "tr";
+  return path.join(process.cwd(), "data", `cms_${safeLocale}.json`);
 }
 
 export type CmsData = {

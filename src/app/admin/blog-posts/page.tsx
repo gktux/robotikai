@@ -1,5 +1,7 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
 import { EditorField } from "@/components/EditorField";
+import { CollapsibleSection } from "@/components/admin/CollapsibleSection";
+import { DeleteButton } from "@/components/admin/DeleteButton";
 
 async function addPost(formData: FormData) {
   "use server";
@@ -111,157 +113,155 @@ export default async function AdminBlogPostsPage() {
         </p>
       </header>
 
-      <section className="mb-8 space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+      <section className="mb-8 space-y-4">
+        <h2 className="px-1 text-sm font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           Mevcut Blog Yazıları
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           {cms.blog.items.map((post: any) => (
-            <div
-              key={post.id}
-              className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50/80 p-3 md:grid-cols-[1.6fr,0.9fr,auto] dark:border-slate-800 dark:bg-slate-800/50"
+            <CollapsibleSection 
+              key={post.id} 
+              title={post.title} 
+              badge={post.category}
+              icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>}
             >
-              <form action={updatePost} className="contents">
-                <input type="hidden" name="id" value={post.id} />
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Başlık</label>
-                  <input
-                    name="title"
-                    defaultValue={post.title}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Kategori
-                  </label>
-                  <input
-                    name="category"
-                    defaultValue={post.category}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Kapak Resmi URL
-                  </label>
-                  <input
-                    name="image"
-                    defaultValue={post.image}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                    placeholder="/uploads/..."
-                  />
-                </div>
-                <div className="space-y-1.5 md:col-span-3">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Kısa Özet
-                  </label>
-                  <input
-                    name="excerpt"
-                    defaultValue={post.excerpt}
-                    className="mb-2 w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Detay İçerik (opsiyonel)
-                  </label>
-                  <div className="flex flex-col gap-2">
+              <div className="grid gap-4">
+                <form action={updatePost} className="space-y-4">
+                  <input type="hidden" name="id" value={post.id} />
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Başlık</label>
+                      <input
+                        name="title"
+                        defaultValue={post.title}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Kategori</label>
+                      <input
+                        name="category"
+                        defaultValue={post.category}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Kapak Resmi URL</label>
+                    <input
+                      name="image"
+                      defaultValue={post.image}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      placeholder="/uploads/..."
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Kısa Özet</label>
+                    <textarea
+                      name="excerpt"
+                      defaultValue={post.excerpt}
+                      rows={2}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Detay İçerik</label>
                     <EditorField 
                       name="content" 
                       defaultValue={(post as { content?: string }).content} 
                     />
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500 italic">💡 Not: Editör zengin metin formatını (kalın, italik, liste vb.) destekler.</span>
-                      <button
-                        type="submit"
-                        className="whitespace-nowrap rounded-full bg-sky-500 px-6 py-2 text-xs font-bold text-white transition hover:bg-sky-400 shadow-sm dark:bg-sky-600 dark:hover:bg-sky-500"
-                      >
-                        Değişiklikleri Kaydet
-                      </button>
-                    </div>
                   </div>
+                  <div className="flex justify-end pt-2">
+                    <button
+                      type="submit"
+                      className="rounded-full bg-sky-500 px-8 py-2.5 text-xs font-bold text-white transition hover:bg-sky-400 shadow-lg shadow-sky-500/20"
+                    >
+                      💾 Değişiklikleri Kaydet
+                    </button>
+                  </div>
+                </form>
+                <div className="border-t border-slate-100 pt-3 dark:border-slate-800">
+                  <form action={deletePost}>
+                    <input type="hidden" name="id" value={post.id} />
+                    <DeleteButton 
+                      label="Yazıyı Tamamen Sil" 
+                      confirmMessage="Bu yazıyı silmek istediğinize emin misiniz? Bu işlem geri alınamaz." 
+                    />
+                  </form>
                 </div>
-              </form>
-              <form action={deletePost} className="mt-1 md:col-span-3">
-                <input type="hidden" name="id" value={post.id} />
-                <button
-                  type="submit"
-                  className="rounded-full bg-red-50 px-3 py-1 text-[11px] font-semibold text-red-600 transition hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50"
-                >
-                  Sil
-                </button>
-              </form>
-            </div>
+              </div>
+            </CollapsibleSection>
           ))}
+          {cms.blog.items.length === 0 && (
+             <div className="py-12 text-center rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+                <p className="text-sm text-slate-500">Henüz hiç blog yazısı eklenmemiş.</p>
+             </div>
+          )}
         </div>
       </section>
 
-      <section className="space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Yeni Yazı Ekle</h2>
-        <form action={addPost} className="space-y-3">
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="space-y-1.5 md:col-span-2">
-              <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="title">
-                Başlık
-              </label>
+      <CollapsibleSection 
+        title="Yeni Yazı Ekle" 
+        defaultOpen={false}
+        className="border-sky-200 bg-sky-50/20 dark:border-sky-900/40 dark:bg-sky-950/20"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>}
+      >
+        <form action={addPost} className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="title">Başlık</label>
               <input
                 id="title"
                 name="title"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+                required
+                placeholder="Örn: Arduino ile Mesafe Sensörü Kullanımı"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               />
             </div>
             <div className="space-y-1.5">
-              <label
-                className="text-[11px] text-slate-700 dark:text-slate-400"
-                htmlFor="category"
-              >
-                Kategori
-              </label>
+              <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="category">Kategori</label>
               <input
                 id="category"
                 name="category"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label 
-                className="text-[11px] text-slate-700 dark:text-slate-400"
-                htmlFor="image"
-              >
-                Kapak Resmi URL
-              </label>
-              <input
-                id="image"
-                name="image"
-                placeholder="/uploads/..."
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+                required
+                placeholder="Örn: Robotik"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               />
             </div>
           </div>
           <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="excerpt">
-              Kısa Özet
-            </label>
+            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="image">Kapak Resmi URL</label>
             <input
-              id="excerpt"
-              name="excerpt"
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+              id="image"
+              name="image"
+              placeholder="https://... veya /uploads/..."
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             />
           </div>
           <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="content">
-              Detay İçerik (opsiyonel)
-            </label>
+            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="excerpt">Kısa Özet</label>
+            <textarea
+              id="excerpt"
+              name="excerpt"
+              required
+              rows={2}
+              placeholder="Yazının anasayfada görünecek kısa özeti..."
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="content">Detay İçerik (opsiyonel)</label>
             <EditorField name="content" />
-            <p className="text-[10px] text-slate-500 italic">💡 Not: Editör aracılığıyla resim ekleyebilir ve metni biçimlendirebilirsiniz.</p>
           </div>
           <button
             type="submit"
-            className="rounded-full bg-sky-500 px-5 py-2 text-xs font-semibold text-white transition hover:bg-sky-400 dark:bg-sky-600 dark:hover:bg-sky-500"
+            className="w-full rounded-full bg-sky-600 py-3 text-xs font-bold text-white transition hover:bg-sky-500 shadow-lg shadow-sky-600/20"
           >
-            Yazıyı Ekle
+            🚀 Yazıyı Paylaş
           </button>
         </form>
-      </section>
+      </CollapsibleSection>
 
       <section className="mt-8 space-y-4 rounded-2xl border border-sky-100 bg-sky-50/30 p-6 text-sm dark:border-sky-900/30 dark:bg-sky-900/10">
         <h3 className="font-bold text-sky-900 dark:text-sky-300 flex items-center gap-2">

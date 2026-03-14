@@ -6,6 +6,7 @@ import { readCmsWithLocale, getLocale } from "@/lib/cms";
 import { Header } from "@/components/Header";
 import { CartProvider } from "@/lib/CartContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,10 +45,12 @@ export default async function RootLayout({
 
           <div className="flex min-h-screen flex-col relative z-0">
             <CartProvider>
-              <Header cms={cms} locale={locale} />
+              <SmoothScroll>
+                <Header cms={cms} locale={locale} />
 
-              {/* Sayfa içeriği */}
-              <main className="flex-1 mt-6 md:mt-10">{children}</main>
+                {/* Sayfa içeriği */}
+                <main className="flex-1 mt-6 md:mt-10">{children}</main>
+              </SmoothScroll>
             </CartProvider>
 
             {/* Alt bilgi */}

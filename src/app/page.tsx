@@ -1,5 +1,6 @@
 // src/app/page.tsx
 import { readCmsWithLocale } from "@/lib/cms";
+import { AnnouncementSlider } from "@/components/AnnouncementSlider";
 
 export default async function Home() {
   const cms = await readCmsWithLocale();
@@ -208,37 +209,19 @@ export default async function Home() {
 
       {/* Duyurular Sections */}
       {cms.announcements?.items?.length > 0 && (
-        <section className="py-16 bg-white dark:bg-slate-950 transition-colors">
+        <section className="py-24 bg-white dark:bg-slate-950 transition-colors">
           <div className="mx-auto max-w-6xl px-4">
-            <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div className="space-y-1">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 dark:text-amber-500">BİLGİLENDİRME</p>
-                <h2 className="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Duyurular & Bildirimler</h2>
+            <header className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="space-y-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500">BILGILENDIRME</p>
+                <h2 className="text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Duyurular & Bildirimler</h2>
               </div>
-              <p className="text-xs text-slate-500 max-w-xs leading-relaxed">Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler.</p>
+              <p className="text-sm text-slate-500 max-w-sm leading-relaxed border-l-2 border-amber-500/30 pl-6 py-1">
+                Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler. Akıştan geri kalmayın.
+              </p>
             </header>
             
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {cms.announcements.items.slice(0, 6).map((ann: any, idx: number) => (
-                <div 
-                  key={idx} 
-                  className={`group relative overflow-hidden p-6 rounded-[2rem] border transition-all hover:shadow-xl ${
-                    ann.isImportant 
-                      ? 'border-amber-200 bg-amber-50/50 dark:border-amber-900/30 dark:bg-amber-900/10 hover:border-amber-300' 
-                      : 'border-slate-100 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/30 hover:border-slate-200'
-                  }`}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tighter">{ann.date}</span>
-                    {ann.isImportant && (
-                      <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
-                    )}
-                  </div>
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{ann.title}</h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{ann.content}</p>
-                </div>
-              ))}
-            </div>
+            <AnnouncementSlider items={cms.announcements.items} />
           </div>
         </section>
       )}
