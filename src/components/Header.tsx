@@ -48,7 +48,7 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
             : "border-white/60 bg-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] md:py-0.5"
         } ${mobileMenuOpen ? "border-white/20 bg-white/95 dark:bg-slate-900/95 dark:border-slate-800" : ""}`}
       >
-        <div className="flex items-center justify-between px-3 py-2 md:px-6 md:py-3 text-neutral-800 dark:text-slate-200">
+        <div className="flex items-center justify-between px-3 py-2 md:px-6 md:py-3 text-neutral-900 font-medium">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="group flex items-center gap-2 md:gap-3.5 transition-all duration-500 relative z-[60] min-w-0">
             {/* 3D Animated Isometric Logo */}
             <div className="relative flex h-8 w-8 md:h-10 md:w-10 shrink-0 items-center justify-center">
@@ -74,10 +74,10 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
             </div>
 
             <div className="flex flex-col pt-0.5 min-w-0">
-              <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] bg-gradient-to-br from-neutral-900 to-neutral-600 bg-clip-text text-transparent group-hover:from-indigo-600 group-hover:to-fuchsia-600 transition-all duration-300 delay-75 dark:from-white dark:to-slate-400 truncate">
+              <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] bg-gradient-to-br from-neutral-900 to-neutral-600 bg-clip-text text-transparent group-hover:from-indigo-600 group-hover:to-fuchsia-600 transition-all duration-300 delay-75 truncate">
                 {cms.site.brandName}
               </span>
-              <span className="text-[7px] md:text-[9px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-neutral-500 group-hover:text-fuchsia-500 transition-colors duration-300 delay-100 dark:text-slate-400 truncate">
+              <span className="text-[7px] md:text-[9px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-neutral-500 group-hover:text-fuchsia-500 transition-colors duration-300 delay-100 truncate">
                 {cms.site.tagline}
               </span>
             </div>
@@ -86,15 +86,15 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
           <nav className="flex items-center gap-1 md:gap-2 group/nav shrink-0">
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center gap-1">
-              <Link href="/courses" className="rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">Eğitimler</Link>
-              <Link href="/shop" className="rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">Ürünler</Link>
-              <Link href="/blog" className="rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">Blog</Link>
-              <Link href="/about" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">Hakkında</Link>
-              <Link href="/contact" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">İletişim</Link>
-              <Link href="/faq" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-semibold text-neutral-600 transition-all hover:bg-neutral-100/80 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400">SSS</Link>
+              <Link href="/courses" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Eğitimler</Link>
+              <Link href="/shop" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Ürünler</Link>
+              <Link href="/blog" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Blog</Link>
+              <Link href="/about" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Hakkında</Link>
+              <Link href="/contact" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">İletişim</Link>
+              <Link href="/faq" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">SSS</Link>
             </div>
 
-            <div className="mx-1 hidden h-4 w-px bg-neutral-300 md:block opacity-50 dark:bg-slate-700"></div>
+            <div className="mx-1 hidden h-4 w-px bg-neutral-300 md:block opacity-50"></div>
 
             <div className="flex items-center gap-1 md:gap-2 relative z-[60]">
               <div className="hidden sm:block">
@@ -106,7 +106,7 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
               <CartLink />
               <Link
                 href="/admin/login"
-                className="hidden md:flex items-center justify-center rounded-full border border-neutral-200 bg-white/50 px-4 py-1.5 text-[11px] font-bold text-neutral-600 shadow-sm transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-400"
+                className="hidden md:flex items-center justify-center rounded-full border border-neutral-200 bg-white/50 px-4 py-1.5 text-[11px] font-bold text-neutral-800 shadow-sm transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
               >
                 Admin
               </Link>
@@ -114,12 +114,12 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
               {/* Hamburger Button */}
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="flex md:hidden items-center justify-center p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex md:hidden items-center justify-center p-2 rounded-full hover:bg-neutral-100 transition-colors"
               >
                 {mobileMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-900 dark:text-slate-200"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-900"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-900 dark:text-slate-200"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-900"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
                 )}
               </button>
             </div>

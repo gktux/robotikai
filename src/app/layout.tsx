@@ -34,7 +34,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-neutral-900 bg-white dark:bg-neutral-950 transition-colors duration-300`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {/* Global Ambient Background */}
           <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
             <div className="absolute -top-[20%] -left-[10%] h-[600px] w-[600px] rounded-full bg-indigo-200/30 blur-[100px] animate-pulse-slow mix-blend-multiply dark:bg-indigo-900/20 dark:mix-blend-screen" />
