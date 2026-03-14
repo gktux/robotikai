@@ -265,6 +265,7 @@ export default async function Home() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {cms.partners.items.map((partner: any, idx: number) => {
+                const randomDelay = (idx * 1.5) % 10; // Simple pseudo-random delay
                 const Item = (
                   <div 
                     className="group relative h-40 flex items-center justify-center rounded-[2.5rem] bg-white/40 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-200/50 dark:border-white/5 transition-all duration-500 hover:bg-white dark:hover:bg-slate-900 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2"
@@ -279,7 +280,8 @@ export default async function Home() {
                     <img 
                       src={partner.logo} 
                       alt={partner.name}
-                      className="max-h-16 max-w-[70%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-105"
+                      className="max-h-16 max-w-[70%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-105 animate-autonomous-glow"
+                      style={{ animationDelay: `${randomDelay}s`, animationDuration: `${8 + (idx % 5)}s` }}
                     />
                     
                     {/* Tooltip-like name label */}

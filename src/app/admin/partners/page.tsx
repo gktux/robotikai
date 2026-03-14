@@ -1,5 +1,6 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 async function addPartner(formData: FormData) {
   "use server";
@@ -32,6 +33,8 @@ async function addPartner(formData: FormData) {
       ],
     },
   }, locale);
+  revalidatePath("/admin/partners");
+  revalidatePath("/");
 }
 
 async function deletePartner(formData: FormData) {
@@ -50,6 +53,8 @@ async function deletePartner(formData: FormData) {
       items: items.filter((item) => item.id !== id),
     },
   }, locale);
+  revalidatePath("/admin/partners");
+  revalidatePath("/");
 }
 
 async function updatePartner(formData: FormData) {
@@ -82,6 +87,8 @@ async function updatePartner(formData: FormData) {
       items: updatedItems,
     },
   }, locale);
+  revalidatePath("/admin/partners");
+  revalidatePath("/");
 }
 
 export default async function AdminPartnersPage() {
@@ -172,6 +179,7 @@ export default async function AdminPartnersPage() {
             <label className="text-[11px] text-slate-700 dark:text-slate-400">Kurum Adı</label>
             <input
               name="name"
+              required
               className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               placeholder="Google, Microsoft vb."
             />
@@ -180,6 +188,7 @@ export default async function AdminPartnersPage() {
             <label className="text-[11px] text-slate-700 dark:text-slate-400">Logo URL</label>
             <input
               name="logo"
+              required
               className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               placeholder="https://..."
             />

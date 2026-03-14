@@ -260,7 +260,7 @@
       {
         "id": 2,
         "name": "Ondokuz Mayıs Üniversitesi",
-        "logo": "https://www.omu.edu.tr/sites/default/files/omu_logo_yenii.png",
+        "logo": "https://yesilyurtmyo.omu.edu.tr/user/themes/fakulte/assets/images/omu_tr.png",
         "link": "https://www.omu.edu.tr"
       },
       {
@@ -268,6 +268,18 @@
         "name": "TÜBİTAK",
         "logo": "https://www.tubitak.gov.tr/sites/default/files/tubitak_logo.png",
         "link": "https://www.tubitak.gov.tr"
+      },
+      {
+        "id": 4,
+        "name": "Microsoft",
+        "logo": "https://www.microsoft.com/favicon.ico",
+        "link": "https://www.microsoft.com"
+      },
+      {
+        "id": 5,
+        "name": "DENEME",
+        "logo": "DENEME",
+        "link": "DENEME"
       }
     ]
   }
