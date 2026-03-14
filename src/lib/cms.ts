@@ -82,6 +82,9 @@ export type CmsData = {
     items: { id: number; question: string; answer: string }[];
   };
   blog: {
+    badge: string;
+    title: string;
+    intro: string;
     items: {
       id: number;
       title: string;
@@ -152,6 +155,22 @@ export function writeCms(partial: Partial<CmsData>, locale: Locale = "tr") {
     contact: {
       ...current.contact,
       ...(partial.contact ?? {}),
+    },
+    courses: {
+      ...current.courses,
+      ...(partial.courses ?? {}),
+    },
+    shop: {
+      ...current.shop,
+      ...(partial.shop ?? {}),
+    },
+    faq: {
+      ...current.faq,
+      ...(partial.faq ?? {}),
+    },
+    blog: {
+      ...current.blog,
+      ...(partial.blog ?? {}),
     },
     news: {
       ...current.news,
