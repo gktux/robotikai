@@ -156,19 +156,23 @@ export default async function AdminCoursesPage() {
                   <label className="text-[11px] text-slate-600 dark:text-slate-400">
                     Detay İçerik (opsiyonel)
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2">
                     <textarea
                       name="content"
                       defaultValue={(course as { content?: string }).content}
-                      rows={2}
-                      className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+                      rows={8}
+                      className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
+                      placeholder="Eğitim detaylarını buraya girin..."
                     />
-                    <button
-                      type="submit"
-                      className="whitespace-nowrap rounded-full bg-sky-500 px-3 py-1.5 text-[11px] font-semibold text-white transition hover:bg-sky-400 dark:bg-sky-600 dark:hover:bg-sky-500"
-                    >
-                      Kaydet
-                    </button>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[10px] text-slate-500 italic">💡 Not: Alt satırlar otomatik algılanır.</span>
+                      <button
+                        type="submit"
+                        className="whitespace-nowrap rounded-full bg-sky-500 px-6 py-2 text-xs font-bold text-white transition hover:bg-sky-400 shadow-sm dark:bg-sky-600 dark:hover:bg-sky-500"
+                      >
+                        Bilgileri Güncelle
+                      </button>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -243,9 +247,11 @@ export default async function AdminCoursesPage() {
             <textarea
               id="content"
               name="content"
-              rows={3}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+              rows={8}
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
+              placeholder="Eğitim detaylı içeriği..."
             />
+            <p className="text-[10px] text-slate-500 italic">💡 Not: Alt satırlar otomatik algılanır.</p>
           </div>
           <button
             type="submit"

@@ -72,7 +72,8 @@ export default async function AdminContentPage() {
           </div>
           <div className="md:col-span-2 space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Alt başlık</label>
-            <textarea name="subtitle" defaultValue={cms.home.subtitle} rows={2} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+            <textarea name="subtitle" defaultValue={cms.home.subtitle} rows={3} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+            <p className="text-[10px] text-slate-500 italic">💡 Not: Alt satırlar otomatik korunur.</p>
           </div>
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Pil 1 başlık</label>
@@ -98,6 +99,7 @@ export default async function AdminContentPage() {
 
       <form action={updateAbout} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/80">
         <h2 className="text-sm font-semibold dark:text-slate-100">Hakkında Sayfası</h2>
+        <p className="text-[10px] text-slate-500 italic mb-2">💡 Not: Her paragrafa girdiğiniz alt satırlar sitede otomatik korunur.</p>
         <div className="space-y-3">
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Başlık</label>
@@ -105,15 +107,15 @@ export default async function AdminContentPage() {
           </div>
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Paragraf 1</label>
-            <textarea name="p1" defaultValue={cms.about.paragraphs[0]} rows={2} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+            <textarea name="p1" defaultValue={cms.about.paragraphs[0]} rows={4} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
           </div>
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Paragraf 2</label>
-            <textarea name="p2" defaultValue={cms.about.paragraphs[1]} rows={2} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+            <textarea name="p2" defaultValue={cms.about.paragraphs[1]} rows={4} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
           </div>
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Paragraf 3</label>
-            <textarea name="p3" defaultValue={cms.about.paragraphs[2]} rows={2} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+            <textarea name="p3" defaultValue={cms.about.paragraphs[2]} rows={4} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
           </div>
         </div>
         <button type="submit" className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-white hover:bg-sky-400 dark:bg-sky-600 dark:hover:bg-sky-500">

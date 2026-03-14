@@ -17,7 +17,7 @@ export default async function AboutPage() {
 
       <div className="space-y-6 text-sm md:text-base text-neutral-600 animate-fade-up delay-200 leading-relaxed bg-white p-8 rounded-3xl border border-neutral-200/80 shadow-sm">
         {cms.about.paragraphs.map((p, idx) => (
-          <p key={idx}>{p}</p>
+          <div key={idx} className="whitespace-pre-wrap">{p}</div>
         ))}
       </div>
     </div>

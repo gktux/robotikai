@@ -1,6 +1,7 @@
 import { readCmsWithLocale } from "@/lib/cms";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MarkdownContent } from "@/components/MarkdownContent";
 
 export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -19,9 +20,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
           {post.title}
         </h1>
         <p className="mt-4 text-slate-600">{post.excerpt}</p>
-        {(post as { content?: string }).content && (
-          <div className="mt-6 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-600">
-            {(post as { content?: string }).content}
+        {(post as any).content && (
+          <div className="mt-6 border-t border-slate-200 pt-6">
+            <MarkdownContent content={(post as any).content ?? ""} />
           </div>
         )}
       </article>

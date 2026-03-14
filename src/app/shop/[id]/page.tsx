@@ -23,9 +23,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </h1>
         <p className="mt-4 text-slate-600">{product.info}</p>
         {(product as { description?: string }).description && (
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+          <div className="mt-4 text-sm leading-relaxed text-slate-600 whitespace-pre-wrap">
             {(product as { description?: string }).description}
-          </p>
+          </div>
         )}
         <p className="mt-4 text-xl font-semibold text-emerald-600">{product.price}</p>
         <div className="mt-6">

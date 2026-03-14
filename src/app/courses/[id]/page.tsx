@@ -1,6 +1,7 @@
 import { readCmsWithLocale } from "@/lib/cms";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MarkdownContent } from "@/components/MarkdownContent";
 
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -26,10 +27,10 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           {course.title}
         </h1>
         <p className="mt-4 text-slate-600">{course.highlight}</p>
-        {(course as { content?: string }).content && (
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            {(course as { content?: string }).content}
-          </p>
+        {(course as any).content && (
+          <div className="mt-4">
+            <MarkdownContent content={(course as any).content} />
+          </div>
         )}
         <a
           href="/contact"
