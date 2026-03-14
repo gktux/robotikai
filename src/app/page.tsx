@@ -120,6 +120,130 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Son Blog Yazıları */}
+      {cms.blog?.items?.length > 0 && (
+        <section className="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
+          <div className="mx-auto max-w-6xl px-4">
+            <header className="mb-12 text-center space-y-2">
+              <h2 className="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Akademiden Son Paylaşımlar</h2>
+              <p className="text-sm text-slate-500">Robotik ve kodlama dünyasından en yeni içerikler.</p>
+              
+              {/* Haberler (News Ticker) - Moved here under heading */}
+              {cms.news?.items?.length > 0 && (
+                <div className="mt-8 bg-slate-950 py-3 overflow-hidden border-y border-white/5 relative z-20 rounded-2xl shadow-xl">
+                  <div className="flex whitespace-nowrap animate-marquee">
+                    {[...cms.news.items, ...cms.news.items, ...cms.news.items].map((news: any, idx) => {
+                      const Item = (
+                        <div className="flex items-center gap-4 px-12 group cursor-pointer">
+                          <span className="text-[10px] font-black uppercase tracking-widest text-sky-500 bg-sky-500/10 px-2 py-0.5 rounded">HABER</span>
+                          <span className="text-xs font-bold text-slate-400">{news.date}</span>
+                          <span className="text-sm font-semibold text-slate-200 group-hover:text-sky-400 transition-colors">
+                            {news.title}
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-slate-800 mx-4" />
+                        </div>
+                      );
+                      return news.link ? (
+                        <a key={idx} href={news.link} target="_blank" rel="noopener noreferrer">
+                          {Item}
+                        </a>
+                      ) : (
+                        <div key={idx}>{Item}</div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </header>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {cms.blog.items.slice(0, 3).map((post: any, idx: number) => (
+                <a 
+                  key={idx}
+                  href={`/blog/${post.id}`}
+                  className="group block space-y-4 animate-fade-up"
+                  style={{ animationDelay: `${idx * 150}ms` }}
+                >
+                  <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-slate-200 dark:bg-slate-800 relative shadow-lg group-hover:shadow-indigo-500/20 transition-all border border-transparent group-hover:border-indigo-500/30">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                    <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                      Yazıyı Oku →
+                    </div>
+                    {post.image ? (
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                    ) : null}
+                    <div className={`h-full w-full bg-gradient-to-br from-indigo-500/20 to-fuchsia-500/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 ${post.image ? 'absolute inset-0 -z-10' : ''}`}>
+                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400/50"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    </div>
+                  </div>
+                  <div className="px-2 space-y-2">
+                    <span className="text-[10px] font-black uppercase text-indigo-500 tracking-widest">{post.category}</span>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <a href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-slate-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                Tüm Blog Yazılarını Gör
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+
+
+      {/* Duyurular Sections */}
+      {cms.announcements?.items?.length > 0 && (
+        <section className="py-16 bg-white dark:bg-slate-950 transition-colors">
+          <div className="mx-auto max-w-6xl px-4">
+            <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 dark:text-amber-500">BİLGİLENDİRME</p>
+                <h2 className="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Duyurular & Bildirimler</h2>
+              </div>
+              <p className="text-xs text-slate-500 max-w-xs leading-relaxed">Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler.</p>
+            </header>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {cms.announcements.items.slice(0, 6).map((ann: any, idx: number) => (
+                <div 
+                  key={idx} 
+                  className={`group relative overflow-hidden p-6 rounded-[2rem] border transition-all hover:shadow-xl ${
+                    ann.isImportant 
+                      ? 'border-amber-200 bg-amber-50/50 dark:border-amber-900/30 dark:bg-amber-900/10 hover:border-amber-300' 
+                      : 'border-slate-100 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/30 hover:border-slate-200'
+                  }`}
+                >
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tighter">{ann.date}</span>
+                    {ann.isImportant && (
+                      <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+                    )}
+                  </div>
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{ann.title}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{ann.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
       {/* Features / Bento Grid */}
       <section className="relative overflow-hidden py-24 transition-colors duration-300">
         <div className="mx-auto max-w-6xl px-4">

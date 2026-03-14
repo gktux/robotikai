@@ -82,14 +82,30 @@ export type CmsData = {
     items: { id: number; question: string; answer: string }[];
   };
   blog: {
-    badge: string;
-    title: string;
-    intro: string;
     items: {
       id: number;
       title: string;
       category: string;
       excerpt: string;
+      image?: string;
+    }[];
+  };
+  news: {
+    items: {
+      id: number;
+      title: string;
+      date: string;
+      image?: string;
+      link?: string;
+    }[];
+  };
+  announcements: {
+    items: {
+      id: number;
+      title: string;
+      content: string;
+      date: string;
+      isImportant?: boolean;
     }[];
   };
 };
@@ -136,6 +152,14 @@ export function writeCms(partial: Partial<CmsData>, locale: Locale = "tr") {
     contact: {
       ...current.contact,
       ...(partial.contact ?? {}),
+    },
+    news: {
+      ...current.news,
+      ...(partial.news ?? {}),
+    },
+    announcements: {
+      ...current.announcements,
+      ...(partial.announcements ?? {}),
     },
   };
 

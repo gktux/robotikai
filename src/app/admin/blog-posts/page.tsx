@@ -7,6 +7,7 @@ async function addPost(formData: FormData) {
   const category = formData.get("category")?.toString().trim() ?? "";
   const excerpt = formData.get("excerpt")?.toString().trim() ?? "";
   const content = formData.get("content")?.toString().trim() ?? "";
+  const image = formData.get("image")?.toString().trim() ?? "";
 
   if (!title) return;
 
@@ -30,6 +31,7 @@ async function addPost(formData: FormData) {
           category,
           excerpt,
           content,
+          image,
         },
       ],
     },
@@ -63,6 +65,7 @@ async function updatePost(formData: FormData) {
   const category = formData.get("category")?.toString().trim() ?? "";
   const excerpt = formData.get("excerpt")?.toString().trim() ?? "";
   const content = formData.get("content")?.toString().trim() ?? "";
+  const image = formData.get("image")?.toString().trim() ?? "";
 
   const locale = await getLocale();
   const current = readCms(locale);
@@ -76,6 +79,7 @@ async function updatePost(formData: FormData) {
           category,
           excerpt,
           content,
+          image,
         }
       : item
   );
@@ -135,6 +139,17 @@ export default async function AdminBlogPostsPage() {
                     name="category"
                     defaultValue={post.category}
                     className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
+                    Kapak Resmi URL
+                  </label>
+                  <input
+                    name="image"
+                    defaultValue={post.image}
+                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+                    placeholder="/uploads/..."
                   />
                 </div>
                 <div className="space-y-1.5 md:col-span-3">
@@ -204,6 +219,20 @@ export default async function AdminBlogPostsPage() {
               <input
                 id="category"
                 name="category"
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label 
+                className="text-[11px] text-slate-700 dark:text-slate-400"
+                htmlFor="image"
+              >
+                Kapak Resmi URL
+              </label>
+              <input
+                id="image"
+                name="image"
+                placeholder="/uploads/..."
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
               />
             </div>

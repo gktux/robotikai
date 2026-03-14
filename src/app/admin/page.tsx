@@ -37,6 +37,18 @@ export default function AdminDashboardPlaceholder() {
             >
               Site Ayarları
             </Link>
+            <Link
+              href="/admin/news"
+              className="rounded-full bg-indigo-500 px-3 py-1 text-[11px] font-semibold text-white dark:bg-indigo-600"
+            >
+              Haberler
+            </Link>
+            <Link
+              href="/admin/announcements"
+              className="rounded-full bg-amber-500 px-3 py-1 text-[11px] font-semibold text-white dark:bg-amber-600"
+            >
+              Duyurular
+            </Link>
           </div>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">

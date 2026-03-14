@@ -211,5 +211,11 @@
         "content": "Projects like LED blinking, traffic light, parking sensor, temperature monitor, and simple robotic arm are both fun and instructive. Each reinforces different concepts: timing, sensor reading, motor control, and logical decisions."
       }
     ]
+  },
+  "news": {
+    "items": []
+  },
+  "announcements": {
+    "items": []
   }
 }
