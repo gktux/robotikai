@@ -191,7 +191,7 @@
     "items": [
       {
         "id": 1,
-        "title": "Arduino Nedir? En Temelden Anlatım",
+        "title": "Arduino ile Robotik Dünyasına Giriş",
         "category": "Arduino Temel",
         "excerpt": "Arduino kart yapısı, pinler, besleme ve temel bileşenler hakkında sade bir giriş.",
         "content": "Arduino, açık kaynak bir elektronik geliştirme platformudur. Mikrodenetleyici tabanlı kartlar, kolay programlama ortamı ve çok sayıda sensör/motor ile uyumlu kütüphane sayesinde robotik ve IoT projelerini hızlıca hayata geçirebilirsin. Bu yazıda pinler, besleme ve temel bileşenler hakkında sade bir giriş sunuyoruz."
