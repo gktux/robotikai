@@ -1,4 +1,5 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
+import { EditorField } from "@/components/EditorField";
 
 async function addPost(formData: FormData) {
   "use server";
@@ -149,15 +150,12 @@ export default async function AdminBlogPostsPage() {
                     Detay İçerik (opsiyonel)
                   </label>
                   <div className="flex flex-col gap-2">
-                    <textarea
-                      name="content"
-                      defaultValue={(post as { content?: string }).content}
-                      rows={10}
-                      className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
-                      placeholder="Buraya yazacağınız tüm alt satırlar ve boşluklar sitede aynen görünecektir..."
+                    <EditorField 
+                      name="content" 
+                      defaultValue={(post as { content?: string }).content} 
                     />
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500 italic">💡 Not: Enter tuşuyla geçtiğiniz alt satırlar sitede aynen korunur.</span>
+                      <span className="text-[10px] text-slate-500 italic">💡 Not: Editör zengin metin formatını (kalın, italik, liste vb.) destekler.</span>
                       <button
                         type="submit"
                         className="whitespace-nowrap rounded-full bg-sky-500 px-6 py-2 text-xs font-bold text-white transition hover:bg-sky-400 shadow-sm dark:bg-sky-600 dark:hover:bg-sky-500"
@@ -224,14 +222,8 @@ export default async function AdminBlogPostsPage() {
             <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="content">
               Detay İçerik (opsiyonel)
             </label>
-            <textarea
-              id="content"
-              name="content"
-              rows={10}
-              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
-              placeholder="Yazı içeriğini buraya girin. Alt satırlar ve boşluklar otomatik olarak korunacaktır..."
-            />
-            <p className="text-[10px] text-slate-500 italic">💡 Not: Yazı editörü otomatik olarak alt satırları (Enter) algılar.</p>
+            <EditorField name="content" />
+            <p className="text-[10px] text-slate-500 italic">💡 Not: Editör aracılığıyla resim ekleyebilir ve metni biçimlendirebilirsiniz.</p>
           </div>
           <button
             type="submit"
@@ -242,36 +234,31 @@ export default async function AdminBlogPostsPage() {
         </form>
       </section>
 
-      <section className="mt-8 space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50/30 p-6 text-sm dark:border-indigo-900/30 dark:bg-indigo-900/10">
-        <h3 className="font-bold text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+      <section className="mt-8 space-y-4 rounded-2xl border border-sky-100 bg-sky-50/30 p-6 text-sm dark:border-sky-900/30 dark:bg-sky-900/10">
+        <h3 className="font-bold text-sky-900 dark:text-sky-300 flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Zengin İçerik Rehberi (Resim & Video)
+          Yeni Görsel Editör Kullanımı
         </h3>
-        <div className="grid gap-6 md:grid-cols-2 text-xs leading-relaxed text-indigo-800/80 dark:text-indigo-400/80">
+        <p className="text-slate-700 dark:text-slate-300">
+          Artık yazılarınızı daha kolay yazabilmeniz için <strong>zengin metin editörü</strong> eklendi. 
+          Toolbar'daki butonları kullanarak şunları yapabilirsiniz:
+        </p>
+        <div className="grid gap-6 md:grid-cols-2 text-xs leading-relaxed text-sky-800/80 dark:text-sky-400/80">
           <div className="space-y-2">
-            <p className="font-bold border-b border-indigo-200 pb-1 dark:border-indigo-800">🖼️ Resim Ekleme</p>
-            <p>Resim eklemek için şu formatı kullanın:</p>
-            <code className="block bg-white/80 p-2 rounded dark:bg-slate-950/80">![Resim Açıklaması](resim_linki)</code>
-            <p className="text-[10px]">Örn: <code className="bg-white/50 px-1">![Arduino Seti](https://resim.com/set.jpg)</code></p>
+            <p className="font-bold border-b border-sky-200 pb-1 dark:border-sky-800">🖼️ Resim & Dosya</p>
+            <p>Toolbar'daki resim ikonuna tıklayarak bilgisayarınızdan resim seçip yazıya anında ekleyebilirsiniz.</p>
           </div>
           <div className="space-y-2">
-            <p className="font-bold border-b border-indigo-200 pb-1 dark:border-indigo-800">🎥 Video Ekleme (YouTube)</p>
-            <p>YouTube videosu eklemek için "Paylaş &gt; Yerleştir" kısmındaki kodu yapıştırın:</p>
-            <code className="block bg-white/80 p-2 rounded dark:bg-slate-950/80">{"<iframe src=\"...\" ...></iframe>"}</code>
+            <p className="font-bold border-b border-sky-200 pb-1 dark:border-sky-800">✍️ Biçimlendirme</p>
+            <p>Metni seçip <strong>B</strong>, <em>I</em> veya <u>U</u> ikonlarına basarak kalın, italik veya altı çizili yapabilirsiniz.</p>
           </div>
           <div className="space-y-2">
-            <p className="font-bold border-b border-indigo-200 pb-1 dark:border-indigo-800">✍️ Yazı Biçimlendirme</p>
-            <ul className="list-disc ml-4 space-y-1">
-              <li><strong>Kalın:</strong> <code className="bg-white/50 px-1">**Metin**</code></li>
-              <li><em>İtalik:</em> <code className="bg-white/50 px-1">*Metin*</code></li>
-              <li>Başlık: <code className="bg-white/50 px-1">## Başlık</code></li>
-              <li>Liste: <code className="bg-white/50 px-1">- Madde</code></li>
-            </ul>
+            <p className="font-bold border-b border-sky-200 pb-1 dark:border-sky-800">🔗 Linkler</p>
+            <p>Herhangi bir metni seçip link ikonuna basarak tıklanabilir bağlantılar ekleyebilirsiniz.</p>
           </div>
           <div className="space-y-2">
-            <p className="font-bold border-b border-indigo-200 pb-1 dark:border-indigo-800">🔗 Link Verme</p>
-            <p>Tıklanabilir link için:</p>
-            <code className="block bg-white/80 p-2 rounded dark:bg-slate-950/80">[Yazı](link_adresi)</code>
+            <p className="font-bold border-b border-sky-200 pb-1 dark:border-sky-800">📋 Listeler & Başlıklar</p>
+            <p>Madde işaretli listeler veya hiyerarşik başlıklar (H1, H2) oluşturabilirsiniz.</p>
           </div>
         </div>
       </section>
