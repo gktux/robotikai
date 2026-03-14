@@ -5,6 +5,8 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
+import { TextStyle } from "@tiptap/extension-text-style";
+import { Color } from "@tiptap/extension-color";
 import { 
   Bold, 
   Italic, 
@@ -18,7 +20,8 @@ import {
   Image as ImageIcon,
   Heading1,
   Heading2,
-  Code
+  Code,
+  Palette
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -40,6 +43,8 @@ export function EditorField({ name, defaultValue = "" }: EditorFieldProps) {
       Image.configure({
         allowBase64: true,
       }),
+      TextStyle,
+      Color,
     ],
     content: defaultValue,
     immediatelyRender: false,
@@ -52,6 +57,14 @@ export function EditorField({ name, defaultValue = "" }: EditorFieldProps) {
       },
     },
   });
+
+  const colors = [
+    { label: "Siyah", value: "#000000" },
+    { label: "Gri", value: "#4b5563" },
+    { label: "Mavi", value: "#0ea5e9" },
+    { label: "Kırmızı", value: "#ef4444" },
+    { label: "Yeşil", value: "#22c55e" },
+  ];
 
   const addImage = () => {
     const input = document.createElement("input");
@@ -154,6 +167,29 @@ export function EditorField({ name, defaultValue = "" }: EditorFieldProps) {
           icon={<Code size={16} />}
           title="Kod"
         />
+        <div className="mx-1 h-6 w-px bg-slate-300 dark:bg-slate-700" />
+        <div className="flex items-center gap-0.5 px-1">
+          {colors.map((color) => (
+            <button
+              key={color.value}
+              type="button"
+              onClick={() => editor.chain().focus().setColor(color.value).run()}
+              className={`h-5 w-5 rounded-full border border-slate-300 transition-transform hover:scale-110 dark:border-slate-600 ${
+                editor.isActive("textStyle", { color: color.value }) ? "ring-2 ring-sky-400 ring-offset-1 dark:ring-offset-slate-900" : ""
+              }`}
+              style={{ backgroundColor: color.value }}
+              title={color.label}
+            />
+          ))}
+          <button
+            type="button"
+            onClick={() => editor.chain().focus().unsetColor().run()}
+            className="ml-1 text-[10px] text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
+            title="Rengi Sıfırla"
+          >
+            Sıfırla
+          </button>
+        </div>
         <div className="mx-1 h-6 w-px bg-slate-300 dark:bg-slate-700" />
         <ToolbarButton
           onClick={setLink}
