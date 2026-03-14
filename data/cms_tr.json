@@ -227,13 +227,6 @@
   "announcements": {
     "items": [
       {
-        "id": 1,
-        "title": "denemeeeee",
-        "content": "",
-        "date": "14.03.2026",
-        "isImportant": false
-      },
-      {
         "id": 2,
         "title": "DNEME 2",
         "content": "",
@@ -246,13 +239,6 @@
         "content": "",
         "date": "14.03.2026",
         "isImportant": true
-      },
-      {
-        "id": 4,
-        "title": "DENEME 6",
-        "content": "",
-        "date": "14.03.2026",
-        "isImportant": false
       },
       {
         "id": 5,
