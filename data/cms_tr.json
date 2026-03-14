@@ -194,7 +194,7 @@
         "title": "Arduino ile Robotik Dünyasına Giriş",
         "category": "Arduino Temel",
         "excerpt": "Arduino kart yapısı, pinler, besleme ve temel bileşenler hakkında sade bir giriş.",
-        "content": "Arduino, açık kaynak bir elektronik geliştirme platformudur. Mikrodenetleyici tabanlı kartlar, kolay programlama ortamı ve çok sayıda sensör/motor ile uyumlu kütüphane sayesinde robotik ve IoT projelerini hızlıca hayata geçirebilirsin. Bu yazıda pinler, besleme ve temel bileşenler hakkında sade bir giriş sunuyoruz."
+        "content": "Arduino İle Neler Yapabilirsin?\r\nSınır sadece hayal gücün! Mesela:\r\n\r\nBitkin Susayınca Sana Haber Versin: Toprak kuruduğunda ışık yakan akıllı bir saksı yapabilirsin.\r\n\r\nOdanın Kapısını Şifrele: Sadece senin bildiğin bir kodla açılan havalı bir kapı kilidi tasarlayabilirsin.\r\n\r\nKendi Uzaktan Kumandalı Aracını Yap: Engelleri algılayan ve onlara çarpmayan bir robot inşa edebilirsin.\r\n\r\nNeden Arduino Bu Kadar Havalı?\r\nLEGO Gibi Kolay: Parçaları birbirine takmak ve basit komutlar vermek yeterli.\r\n\r\nHata Yapmak Serbest: Bir şeyi yanlış bağlarsan patlamaz! Sadece düzeltir ve yeniden denersin. Bu işin en eğlenceli kısmı denemek.\r\n\r\nBüyük Bir Aile: Dünyada milyonlarca çocuk seninle aynı şeyi yapıyor. Takıldığın her yerde sana yardım edecek birileri mutlaka var.\r\n\r\nİlk Adım: İlk Işığını Yakmaya Hazır Mısın?\r\nArduino dünyasına girmek için profesyonel olmana gerek yok. İhtiyacın olan tek şey bir Arduino kartı, bir LED lamba ve birazcık merak! Bir sonraki yazımızda, bilgisayarımıza ilk kodumuzu yazıp o meşhur \"L\" lambasını nasıl yakacağımızı öğreneceğiz."
       },
       {
         "id": 2,
