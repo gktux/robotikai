@@ -84,11 +84,11 @@
     "items": [
       {
         "id": 1,
-        "title": "Arduino 0'dan 1'e Başlangıç",
+        "title": "Geleceği Sen İnşa Et: Arduino ile Robotik Dünyasına Giriş",
         "level": "Başlangıç",
-        "duration": "6 Hafta",
-        "highlight": "LED, buton, sensör temelleri.",
-        "content": "Bu eğitimde Arduino kartını tanıyacak, breadboard üzerinde LED, buton ve sensör devreleri kuracak, temel C kodları yazacaksın. Toplam 6 hafta boyunca haftalık canlı dersler ve uygulama videoları ile sıfırdan başlayanlar için tasarlandı."
+        "duration": "Hafta",
+        "highlight": "Kendi akıllı cihazlarını tasarlamaya hazır mısın? Işıkları kontrol et, sensörlerle çevreni algıla ve hayalindeki robotu gerçeğe dönüştür!",
+        "content": "Bu kursta sıkıcı teoriler yok! Sadece ellerimizi kirleterek, devre kurarak ve kod yazarak öğreniyoruz. Kendi kendine giden araçlardan, akıllı saksılara kadar birçok eğlenceli proje seni bekliyor."
       },
       {
         "id": 2,
