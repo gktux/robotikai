@@ -191,3 +191,31 @@ body {
 .animate-autonomous-glow {
   animation: autonomous-glow 12s ease-in-out infinite;
 }
+
+/* Swiper Slider Adjustments */
+.announcement-slider-container .swiper-button-next,
+.announcement-slider-container .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  color: #f59e0b;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dark .announcement-slider-container .swiper-button-next,
+.dark .announcement-slider-container .swiper-button-prev {
+  background: #0f172a;
+  border-color: rgba(255,255,255,0.05);
+}
+
+.announcement-slider-container .swiper-button-next:after,
+.announcement-slider-container .swiper-button-prev:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.announcement-slider-container .swiper-pagination-bullet-active {
+  background: #f59e0b;
+}
