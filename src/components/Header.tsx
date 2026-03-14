@@ -177,7 +177,7 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
         </div>
 
         {/* Mobile Navigation Dropdown */}
-        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileMenuOpen ? "max-h-[500px] opacity-100 py-4 px-2" : "max-h-0 opacity-0"}`}>
+        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileMenuOpen ? "max-h-[600px] opacity-100 py-4 px-2" : "max-h-0 opacity-0"}`}>
           <div className="flex flex-col gap-1 p-2">
             {navLinks.map((link) => (
               <Link 
@@ -189,6 +189,16 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
                 {link.label}
               </Link>
             ))}
+            
+            <div className="mt-4 flex items-center justify-between px-6 py-4 rounded-2xl bg-neutral-50 dark:bg-slate-900/50 border border-neutral-100 dark:border-slate-800">
+              <span className="text-sm font-semibold text-neutral-500 dark:text-slate-400">Görünüm ve Dil</span>
+              <div className="flex items-center gap-3">
+                <LanguageSwitcher currentLocale={locale} />
+                <div className="w-px h-4 bg-neutral-200 dark:bg-slate-700"></div>
+                <ThemeToggle />
+              </div>
+            </div>
+
             <Link 
               href="/admin/login"
               onClick={() => setMobileMenuOpen(false)}
