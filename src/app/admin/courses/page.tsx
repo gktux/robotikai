@@ -10,6 +10,11 @@ async function addCourse(formData: FormData) {
   const duration = formData.get("duration")?.toString().trim() ?? "";
   const highlight = formData.get("highlight")?.toString().trim() ?? "";
   const content = formData.get("content")?.toString().trim() ?? "";
+  const regLabel = formData.get("regLabel")?.toString().trim() ?? "Ön Kayıt";
+  const regTitle = formData.get("regTitle")?.toString().trim() ?? "Şimdi Başvur";
+  const regButton = formData.get("regButton")?.toString().trim() ?? "Kayıt Ol";
+  const regLink = formData.get("regLink")?.toString().trim() ?? "/contact";
+  const regEnabled = formData.get("regEnabled") === "on";
 
   if (!title) return;
 
@@ -34,6 +39,11 @@ async function addCourse(formData: FormData) {
           duration,
           highlight,
           content,
+          regLabel,
+          regTitle,
+          regButton,
+          regLink,
+          regEnabled,
         },
       ],
     },
@@ -68,6 +78,11 @@ async function updateCourse(formData: FormData) {
   const duration = formData.get("duration")?.toString().trim() ?? "";
   const highlight = formData.get("highlight")?.toString().trim() ?? "";
   const content = formData.get("content")?.toString().trim() ?? "";
+  const regLabel = formData.get("regLabel")?.toString().trim() ?? "";
+  const regTitle = formData.get("regTitle")?.toString().trim() ?? "";
+  const regButton = formData.get("regButton")?.toString().trim() ?? "";
+  const regLink = formData.get("regLink")?.toString().trim() ?? "";
+  const regEnabled = formData.get("regEnabled") === "on";
 
   const locale = await getLocale();
   const current = readCms(locale);
@@ -82,6 +97,11 @@ async function updateCourse(formData: FormData) {
           duration,
           highlight,
           content,
+          regLabel,
+          regTitle,
+          regButton,
+          regLink,
+          regEnabled,
         }
       : item
   );
@@ -163,6 +183,34 @@ export default async function AdminCoursesPage() {
                       defaultValue={course.highlight}
                       className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                     />
+                  </div>
+
+                  <div className="rounded-2xl border border-indigo-100 bg-indigo-50/30 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+                    <div className="mb-3 flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Kayıt / Başvuru Alanı</h3>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="regEnabled" defaultChecked={course.regEnabled !== false} className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500" />
+                        <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Aktif</span>
+                      </label>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold uppercase text-slate-500">Etiket (Örn: Ön Kayıt)</label>
+                        <input name="regLabel" defaultValue={course.regLabel ?? "Ön Kayıt"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold uppercase text-slate-500">Başlık (Örn: Şimdi Başvur)</label>
+                        <input name="regTitle" defaultValue={course.regTitle ?? "Şimdi Başvur"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold uppercase text-slate-500">Buton (Örn: Kayıt Ol)</label>
+                        <input name="regButton" defaultValue={course.regButton ?? "Kayıt Ol"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold uppercase text-slate-500">Link (Örn: /contact)</label>
+                        <input name="regLink" defaultValue={course.regLink ?? "/contact"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-1.5">
@@ -251,6 +299,34 @@ export default async function AdminCoursesPage() {
               placeholder="Programın kısa, çarpıcı özeti..."
               className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             />
+          </div>
+
+          <div className="rounded-2xl border border-indigo-100 bg-white/50 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+            <div className="mb-3 flex items-center justify-between">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Kayıt / Başvuru Alanı</h3>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="regEnabled" defaultChecked={true} className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500" />
+                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Aktif</span>
+              </label>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-500">Etiket</label>
+                <input name="regLabel" placeholder="Ön Kayıt" defaultValue="Ön Kayıt" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-500">Başlık</label>
+                <input name="regTitle" placeholder="Şimdi Başvur" defaultValue="Şimdi Başvur" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-500">Buton Metni</label>
+                <input name="regButton" placeholder="Kayıt Ol" defaultValue="Kayıt Ol" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-500">Hedef Link</label>
+                <input name="regLink" placeholder="/contact" defaultValue="/contact" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-1.5">

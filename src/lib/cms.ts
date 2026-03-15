@@ -35,7 +35,6 @@ export type CmsData = {
     cardLevelText: string;
     cardBottomText: string;
     cardBottomBadge: string;
-    cardNote: string;
     features: { title: string; description: string }[];
     steps: { number: string; title: string; description: string }[];
     cta: { title: string; subtitle: string; buttonPri: string; buttonSec: string; };
@@ -61,6 +60,11 @@ export type CmsData = {
       level: string;
       duration: string;
       highlight: string;
+      regLabel?: string;
+      regTitle?: string;
+      regButton?: string;
+      regLink?: string;
+      regEnabled?: boolean;
     }[];
   };
   shop: {

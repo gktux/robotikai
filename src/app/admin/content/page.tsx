@@ -15,11 +15,16 @@ async function updateHome(formData: FormData) {
       pill1Text: formData.get("pill1Text")?.toString() ?? "",
       pill2Title: formData.get("pill2Title")?.toString() ?? "",
       pill2Text: formData.get("pill2Text")?.toString() ?? "",
-      features: [], // Preserving from current would require readCms, but let's handle via partial merge in writeCms
-      steps: [],
-      cta: { title: "", subtitle: "", buttonPri: "", buttonSec: "" },
-      cardTitle: "", cardModTitle: "", cardModText: "", cardDuration: "", cardDurationText: "", cardLevel: "", cardLevelText: "", cardBottomText: "", cardBottomBadge: "", cardNote: ""
-    }
+      cardTitle: formData.get("cardTitle")?.toString() ?? "",
+      cardModTitle: formData.get("cardModTitle")?.toString() ?? "",
+      cardModText: formData.get("cardModText")?.toString() ?? "",
+      cardDuration: formData.get("cardDuration")?.toString() ?? "",
+      cardDurationText: formData.get("cardDurationText")?.toString() ?? "",
+      cardLevel: formData.get("cardLevel")?.toString() ?? "",
+      cardLevelText: formData.get("cardLevelText")?.toString() ?? "",
+      cardBottomText: formData.get("cardBottomText")?.toString() ?? "",
+      cardBottomBadge: formData.get("cardBottomBadge")?.toString() ?? "",
+    } as any
   }, locale);
 }
 
@@ -90,6 +95,49 @@ export default async function AdminContentPage() {
           <div className="space-y-1">
             <label className="text-[11px] text-slate-600 dark:text-slate-400">Pil 2 metin</label>
             <input name="pill2Text" defaultValue={cms.home.pill2Text} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+        </div>
+
+        <h3 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 pt-4 border-t border-slate-100 dark:border-slate-800">Kart İçeriği (Simülasyon Alanı)</h3>
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="md:col-span-3 space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Kart Üst Başlık</label>
+            <input name="cardTitle" defaultValue={cms.home.cardTitle} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Mod Başlık</label>
+            <input name="cardModTitle" defaultValue={cms.home.cardModTitle} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Süre Başlık</label>
+            <input name="cardDuration" defaultValue={cms.home.cardDuration} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Seviye Başlık</label>
+            <input name="cardLevel" defaultValue={cms.home.cardLevel} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Mod Metin</label>
+            <textarea name="cardModText" defaultValue={cms.home.cardModText} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Süre Metin</label>
+            <textarea name="cardDurationText" defaultValue={cms.home.cardDurationText} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Seviye Metin</label>
+            <textarea name="cardLevelText" defaultValue={cms.home.cardLevelText} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+
+          <div className="md:col-span-2 space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Kart Alt Metin</label>
+            <input name="cardBottomText" defaultValue={cms.home.cardBottomText} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
+          </div>
+          <div className="space-y-1">
+            <label className="text-[11px] text-slate-600 dark:text-slate-400">Kart Alt Rozet</label>
+            <input name="cardBottomBadge" defaultValue={cms.home.cardBottomBadge} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500" />
           </div>
         </div>
         <button type="submit" className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-white hover:bg-sky-400 dark:bg-sky-600 dark:hover:bg-sky-500">

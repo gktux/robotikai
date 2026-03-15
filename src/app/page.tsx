@@ -114,9 +114,6 @@ export default async function Home() {
                 </div>
               </div>
 
-              <p className="mt-4 text-center text-[11px] text-neutral-500 dark:text-slate-500">
-                {cms.home.cardNote}
-              </p>
             </div>
           </div>
         </div>

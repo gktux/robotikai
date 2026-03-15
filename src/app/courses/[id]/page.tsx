@@ -58,19 +58,25 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           {/* Body Content */}
           <ScrollReveal delay={0.3}>
             <div className="rounded-[3rem] border border-slate-100 bg-white p-8 shadow-2xl shadow-slate-200/50 md:p-16 dark:border-slate-800/50 dark:bg-slate-900/40 dark:shadow-none backdrop-blur-sm">
-              <div className="mb-12 flex items-center justify-between border-b border-slate-100 pb-8 dark:border-slate-800">
-                 <div className="flex flex-col gap-1">
-                    <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400">Ön Kayıt</span>
-                    <span className="text-sm font-bold text-slate-800 dark:text-white">Şimdi Başvur</span>
-                 </div>
-                 <Link
-                    href="/contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-3 text-sm font-bold text-white transition-all hover:bg-indigo-700 hover:scale-105 active:scale-95 shadow-xl shadow-indigo-600/20"
-                  >
-                    Kayıt Ol 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </Link>
-              </div>
+              {course.regEnabled !== false && (
+                <div className="mb-12 flex items-center justify-between border-b border-slate-100 pb-8 dark:border-slate-800 animate-fade-in">
+                   <div className="flex flex-col gap-1">
+                      <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400">
+                        {course.regLabel || "Ön Kayıt"}
+                      </span>
+                      <span className="text-sm font-bold text-slate-800 dark:text-white">
+                        {course.regTitle || "Şimdi Başvur"}
+                      </span>
+                   </div>
+                   <Link
+                      href={course.regLink || "/contact"}
+                      className="group inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-3 text-sm font-bold text-white transition-all hover:bg-indigo-700 hover:scale-105 active:scale-95 shadow-xl shadow-indigo-600/20"
+                    >
+                      {course.regButton || "Kayıt Ol"}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </Link>
+                </div>
+              )}
               
               {(course as any).content && (
                 <MarkdownContent content={(course as any).content} />
