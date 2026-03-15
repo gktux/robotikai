@@ -42,59 +42,47 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
   return (
     <div className="sticky top-0 z-50 px-4 pt-3 md:pt-5 transition-transform duration-500 group/header">
       <header 
-        className={`mx-auto max-w-6xl rounded-2xl md:rounded-full border transition-all duration-300 ease-out backdrop-blur-2xl ${
+        className={`mx-auto max-w-6xl rounded-2xl md:rounded-full border transition-all duration-500 ease-out backdrop-blur-3xl ${
           scrolled 
-            ? "border-white/40 bg-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.06)] md:py-0 scale-[0.98] group-hover/header:scale-100 group-hover/header:bg-white/80 group-hover/header:border-white/80 group-hover/header:shadow-[0_8px_30px_rgb(0,0,0,0.12)]" 
-            : "border-white/60 bg-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] md:py-0.5"
-        } ${mobileMenuOpen ? "border-white/20 bg-white/95 dark:bg-slate-900/95 dark:border-slate-800" : ""}`}
+            ? "header-glass-vibrant border-cyan-500/30 shadow-[0_12px_40px_rgba(20,184,166,0.15)] md:py-0 scale-[0.98]" 
+            : "header-glass-vibrant border-glow-vibrant md:py-1.5"
+        } ${mobileMenuOpen ? "bg-white dark:bg-slate-950" : ""}`}
       >
-        <div className="flex items-center justify-between px-3 py-2 md:px-6 md:py-3 text-neutral-900 font-medium">
+        <div className="flex items-center justify-between px-3 py-2 md:px-6 md:py-3 text-neutral-900 dark:text-neutral-100 font-medium">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="group flex items-center gap-2 md:gap-3.5 transition-all duration-500 relative z-[60] min-w-0">
-            {/* 3D Animated Isometric Logo */}
-            <div className="relative flex h-8 w-8 md:h-10 md:w-10 shrink-0 items-center justify-center">
-              {/* Glowing Aura behind logo */}
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 blur-[10px] transition-all duration-500 group-hover:opacity-60 group-hover:blur-xl group-hover:scale-125 ${scrolled ? 'opacity-10 group-hover/header:opacity-30' : 'opacity-20'}`} />
+            {/* Legendary Animated Branding - Full Logo */}
+            <div className="relative flex h-8 md:h-10 shrink-0 items-center justify-center logo-container">
+              {/* AI Energy Field behind logo */}
+              <div className="logo-energy-field" />
               
-              <svg viewBox="0 0 40 40" className="relative h-full w-full drop-shadow-sm transition-transform duration-700 ease-out group-hover:scale-110 group-hover:-rotate-[-10deg]">
-                <defs>
-                  <linearGradient id="logo-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#6366f1" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                  <linearGradient id="logo-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#d946ef" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                </defs>
-                <path d="M20 5 L8 11 L8 29 L20 35 L20 20 Z" fill="url(#logo-grad-1)" className="transition-all duration-700 ease-in-out group-hover:-translate-x-[2px] group-hover:-translate-y-[2px]" />
-                <path d="M20 5 L32 11 L32 29 L20 35 L20 20 Z" fill="url(#logo-grad-2)" opacity="0.85" className="transition-all duration-700 ease-in-out group-hover:translate-x-[2px] group-hover:translate-y-[1px]" />
-                <path d="M20 15 L26 12 L20 9 L14 12 Z" fill="#ffffff" className="animate-pulse opacity-90 transition-all duration-700 group-hover:scale-110 origin-center" />
-                <line x1="20" y1="15" x2="20" y2="34" stroke="white" strokeWidth="1.5" strokeLinecap="round" className="opacity-60" />
-              </svg>
-            </div>
-
-            <div className="flex flex-col pt-0.5 min-w-0">
-              <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] bg-gradient-to-br from-neutral-900 to-neutral-600 bg-clip-text text-transparent group-hover:from-indigo-600 group-hover:to-fuchsia-600 transition-all duration-300 delay-75 truncate">
-                {cms.site.brandName}
-              </span>
-              <span className="text-[7px] md:text-[9px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-neutral-500 group-hover:text-fuchsia-500 transition-colors duration-300 delay-100 truncate">
-                {cms.site.tagline}
-              </span>
+              <div className="relative h-full logo-shimmer logo-3d flex items-center justify-center">
+                <div className="logo-scanline" />
+                <img 
+                  src="/Logo.png" 
+                  alt="RobotikAI Logo" 
+                  className="h-full w-auto object-contain dark:hidden transition-transform duration-500" 
+                />
+                <img 
+                  src="/Logo (Beyaz).png" 
+                  alt="RobotikAI Logo" 
+                  className="h-full w-auto object-contain hidden dark:block transition-transform duration-500" 
+                />
+              </div>
             </div>
           </Link>
 
           <nav className="flex items-center gap-1 md:gap-2 group/nav shrink-0">
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center gap-1">
-              <Link href="/courses" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Eğitimler</Link>
-              <Link href="/shop" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Ürünler</Link>
-              <Link href="/blog" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Blog</Link>
-              <Link href="/about" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">Hakkında</Link>
-              <Link href="/contact" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">İletişim</Link>
-              <Link href="/faq" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 transition-all hover:bg-neutral-100 hover:text-indigo-600">SSS</Link>
+              <Link href="/courses" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">Eğitimler</Link>
+              <Link href="/shop" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">Ürünler</Link>
+              <Link href="/blog" className="rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">Blog</Link>
+              <Link href="/about" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">Hakkında</Link>
+              <Link href="/contact" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">İletişim</Link>
+              <Link href="/faq" className="hidden lg:inline-block rounded-full px-3 py-2 text-xs font-bold text-neutral-700 dark:text-neutral-300 transition-all hover:bg-cyan-500/5 dark:hover:bg-cyan-400/10 hover:text-teal-600 dark:hover:text-cyan-400">SSS</Link>
             </div>
 
-            <div className="mx-1 hidden h-4 w-px bg-neutral-300 md:block opacity-50"></div>
+            <div className="mx-1 hidden h-4 w-px bg-neutral-500/20 md:block"></div>
 
             <div className="flex items-center gap-1 md:gap-2 relative z-[60]">
               <div className="hidden sm:block">
@@ -106,7 +94,7 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
               <CartLink />
               <Link
                 href="/admin/login"
-                className="hidden md:flex items-center justify-center rounded-full border border-neutral-200 bg-white/50 px-4 py-1.5 text-[11px] font-bold text-neutral-800 shadow-sm transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+                className="hidden md:flex items-center justify-center rounded-full border border-cyan-500/40 bg-gradient-to-r from-teal-500 to-cyan-500 px-4 py-1.5 text-[11px] font-bold text-white shadow-[0_4px_15px_rgba(20,184,166,0.3)] transition-all hover:scale-105 hover:shadow-[0_8px_25px_rgba(20,184,166,0.4)]"
               >
                 Admin
               </Link>
