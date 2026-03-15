@@ -41,6 +41,16 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
 
   return (
     <div className="sticky top-0 z-50 px-4 pt-3 md:pt-5 transition-transform duration-500 group/header">
+      {/* Visual Decoration for the empty area around header */}
+      <div className="cyber-grid-container hidden md:block">
+        <div className="cyber-mist" />
+        <div className="cyber-grid" />
+        <div className="circuit-line circuit-line-1" />
+        <div className="circuit-line circuit-line-2" />
+        <div className="circuit-line circuit-line-3" />
+        <div className="circuit-line circuit-line-4" />
+      </div>
+
       <header 
         className={`mx-auto max-w-6xl rounded-2xl md:rounded-full border transition-all duration-500 ease-out backdrop-blur-3xl ${
           scrolled 
