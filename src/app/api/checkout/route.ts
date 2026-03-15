@@ -65,6 +65,11 @@ export async function POST(request: NextRequest) {
       createdAt: new Date().toISOString(),
     };
 
+    const dataDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
     const orders = getOrders();
     orders.push(order);
     saveOrders(orders);

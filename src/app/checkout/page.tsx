@@ -166,6 +166,20 @@ export default function CheckoutPage() {
                 placeholder="Teslimat adresi"
               />
             </div>
+
+            {/* Legal Checkboxes */}
+            <div className="space-y-3 pt-2">
+              <label className="flex items-start gap-2 cursor-pointer group">
+                <input
+                  required
+                  type="checkbox"
+                  className="mt-1 h-3.5 w-3.5 rounded border-slate-300 text-sky-500 focus:ring-sky-500/20"
+                />
+                <span className="text-[10px] leading-relaxed text-slate-500 group-hover:text-slate-700 transition-colors">
+                  <a href="/legal/kvkk" target="_blank" className="font-semibold text-slate-700 underline hover:text-sky-600 transition-colors">KVKK Aydınlatma Metni</a>'ni okudum ve verilerimin işlenmesini onaylıyorum.
+                </span>
+              </label>
+            </div>
           </div>
 
           <div className="space-y-4">

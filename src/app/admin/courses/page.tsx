@@ -1,4 +1,7 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
+import { EditorField } from "@/components/EditorField";
+import { CollapsibleSection } from "@/components/admin/CollapsibleSection";
+import { DeleteButton } from "@/components/admin/DeleteButton";
 
 async function addCourse(formData: FormData) {
   "use server";
@@ -97,170 +100,172 @@ export default async function AdminCoursesPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
       <header className="mb-6 space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-600 dark:text-sky-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-600 dark:text-indigo-400">
           ROBOTIKAI • Eğitimler
         </p>
         <h1 className="text-2xl font-semibold tracking-tight md:text-3xl dark:text-slate-100">
-          Eğitim Listesi Yönetimi
+          Eğitim Programları Yönetimi
         </h1>
         <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-400">
-          Buradan sitede görünen eğitim kartlarını ekleyebilir, düzenleyebilir
+          Buradan sitede görünen eğitim programlarını ekleyebilir, düzenleyebilir
           veya silebilirsin. /courses sayfası her zaman bu listedeki verileri
           kullanır.
         </p>
       </header>
 
-      <section className="mb-8 space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Mevcut Eğitimler</h2>
-        <div className="space-y-3">
+      <section className="mb-8 space-y-4">
+        <h2 className="px-1 text-sm font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          Mevcut Eğitim Programları
+        </h2>
+        <div className="space-y-4">
           {cms.courses.items.map((course: any) => (
-            <div
-              key={course.id}
-              className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50/80 p-3 md:grid-cols-[1.5fr,1fr,1fr,auto] dark:border-slate-800 dark:bg-slate-800/50"
+            <CollapsibleSection 
+              key={course.id} 
+              title={course.title} 
+              badge={`${course.level} Seviye`}
+              icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>}
             >
-              <form action={updateCourse} className="contents">
-                <input type="hidden" name="id" value={course.id} />
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Başlık</label>
-                  <input
-                    name="title"
-                    defaultValue={course.title}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Seviye</label>
-                  <input
-                    name="level"
-                    defaultValue={course.level}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Süre</label>
-                  <input
-                    name="duration"
-                    defaultValue={course.duration}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5 md:col-span-4">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Kısa Açıklama
-                  </label>
-                  <input
-                    name="highlight"
-                    defaultValue={course.highlight}
-                    className="mb-2 w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">
-                    Detay İçerik (opsiyonel)
-                  </label>
-                  <div className="flex flex-col gap-2">
-                    <textarea
-                      name="content"
-                      defaultValue={(course as { content?: string }).content}
-                      rows={8}
-                      className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
-                      placeholder="Eğitim detaylarını buraya girin..."
-                    />
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500 italic">💡 Not: Alt satırlar otomatik algılanır.</span>
-                      <button
-                        type="submit"
-                        className="whitespace-nowrap rounded-full bg-sky-500 px-6 py-2 text-xs font-bold text-white transition hover:bg-sky-400 shadow-sm dark:bg-sky-600 dark:hover:bg-sky-500"
-                      >
-                        Bilgileri Güncelle
-                      </button>
+              <div className="grid gap-4">
+                <form action={updateCourse} className="space-y-4">
+                  <input type="hidden" name="id" value={course.id} />
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <div className="space-y-1.5 md:col-span-1">
+                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Başlık</label>
+                      <input
+                        name="title"
+                        defaultValue={course.title}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Seviye</label>
+                      <input
+                        name="level"
+                        defaultValue={course.level}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Süre</label>
+                      <input
+                        name="duration"
+                        defaultValue={course.duration}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      />
                     </div>
                   </div>
+                  
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Kısa Açıklama (Highlight)</label>
+                    <input
+                      name="highlight"
+                      defaultValue={course.highlight}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Detay İçerik</label>
+                    <EditorField 
+                      name="content" 
+                      defaultValue={(course as { content?: string }).content} 
+                    />
+                  </div>
+                  
+                  <div className="flex justify-end pt-2">
+                    <button
+                      type="submit"
+                      className="rounded-full bg-indigo-500 px-8 py-2.5 text-xs font-bold text-white transition hover:bg-indigo-400 shadow-lg shadow-indigo-500/20"
+                    >
+                      💾 Değişiklikleri Kaydet
+                    </button>
+                  </div>
+                </form>
+                <div className="border-t border-slate-100 pt-3 dark:border-slate-800">
+                  <form action={deleteCourse}>
+                    <input type="hidden" name="id" value={course.id} />
+                    <DeleteButton 
+                      label="Eğitimi Tamamen Sil" 
+                      confirmMessage="Bu eğitim programını silmek istediğinize emin misiniz? Bu işlem geri alınamaz." 
+                    />
+                  </form>
                 </div>
-              </form>
-              <form action={deleteCourse} className="mt-1 md:col-span-4">
-                <input type="hidden" name="id" value={course.id} />
-                <button
-                  type="submit"
-                  className="rounded-full bg-red-50 px-3 py-1 text-[11px] font-semibold text-red-600 transition hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50"
-                >
-                  Sil
-                </button>
-              </form>
-            </div>
+              </div>
+            </CollapsibleSection>
           ))}
+          {cms.courses.items.length === 0 && (
+             <div className="py-12 text-center rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+                <p className="text-sm text-slate-500">Henüz hiç eğitim programı eklenmemiş.</p>
+             </div>
+          )}
         </div>
       </section>
 
-      <section className="space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Yeni Eğitim Ekle</h2>
-        <form action={addCourse} className="space-y-3">
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="space-y-1.5 md:col-span-2">
-              <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="title">
-                Başlık
-              </label>
-              <input
-                id="title"
-                name="title"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="level">
-                Seviye
-              </label>
-              <input
-                id="level"
-                name="level"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-              />
-            </div>
+      <CollapsibleSection 
+        title="Yeni Eğitim Ekle" 
+        defaultOpen={false}
+        className="border-indigo-200 bg-indigo-50/20 dark:border-indigo-900/40 dark:bg-indigo-950/20"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>}
+      >
+        <form action={addCourse} className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-3">
+             <div className="space-y-1.5 md:col-span-1">
+                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="title">Başlık</label>
+                <input
+                  id="title"
+                  name="title"
+                  required
+                  placeholder="Örn: İleri Seviye Robotik"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                />
+             </div>
+             <div className="space-y-1.5">
+                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="level">Seviye</label>
+                <input
+                  id="level"
+                  name="level"
+                  required
+                  placeholder="Örn: Başlangıç"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                />
+             </div>
+             <div className="space-y-1.5">
+                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="duration">Süre</label>
+                <input
+                  id="duration"
+                  name="duration"
+                  required
+                  placeholder="Örn: 8 Hafta"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                />
+             </div>
           </div>
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="space-y-1.5">
-              <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="duration">
-                Süre
-              </label>
-              <input
-                id="duration"
-                name="duration"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-              />
-            </div>
-            <div className="space-y-1.5 md:col-span-2">
-              <label
-                className="text-[11px] text-slate-700 dark:text-slate-400"
-                htmlFor="highlight"
-              >
-                Kısa Açıklama
-              </label>
-              <input
-                id="highlight"
-                name="highlight"
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-              />
-            </div>
-          </div>
+          
           <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400" htmlFor="content">
-              Detay İçerik (opsiyonel)
-            </label>
-            <textarea
-              id="content"
-              name="content"
-              rows={8}
-              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/40 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500 font-sans leading-relaxed"
-              placeholder="Eğitim detaylı içeriği..."
+            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="highlight">Kısa Açıklama</label>
+            <input
+              id="highlight"
+              name="highlight"
+              required
+              placeholder="Programın kısa, çarpıcı özeti..."
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             />
-            <p className="text-[10px] text-slate-500 italic">💡 Not: Alt satırlar otomatik algılanır.</p>
           </div>
+
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="content">Detay İçerik (opsiyonel)</label>
+            <EditorField name="content" />
+          </div>
+          
           <button
             type="submit"
-            className="rounded-full bg-sky-500 px-5 py-2 text-xs font-semibold text-white transition hover:bg-sky-400 dark:bg-sky-600 dark:hover:bg-sky-500"
+            className="w-full rounded-full bg-indigo-600 py-3 text-xs font-bold text-white transition hover:bg-indigo-500 shadow-lg shadow-indigo-600/20"
           >
-            Eğitimi Ekle
+            🚀 Eğitimi Yayınla
           </button>
         </form>
-      </section>
+      </CollapsibleSection>
     </div>
   );
 }

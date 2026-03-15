@@ -29,7 +29,7 @@ export default function CartPage() {
         setError(result.error || "Bir hata oluştu.");
       }
     } catch (err) {
-      setError("Bağlantı hatası oluştu. Lütfen tekrar deneyin.");
+      setError("Bağlantı hatası oluştu. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.");
     } finally {
       setIsSubmitting(false);
     }
@@ -208,8 +208,21 @@ export default function CartPage() {
                   name="address"
                   rows={3}
                   className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition-all resize-none"
-                  placeholder="Teslimat adresini giriniz..."
                 />
+              </div>
+
+              {/* Legal Checkboxes */}
+              <div className="space-y-3 pt-2">
+                <label className="flex items-start gap-2 cursor-pointer group">
+                  <input
+                    required
+                    type="checkbox"
+                    className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500/20"
+                  />
+                  <span className="text-[11px] leading-relaxed text-slate-500 group-hover:text-slate-700 transition-colors">
+                    <a href="/legal/kvkk" target="_blank" className="font-semibold text-slate-700 underline hover:text-sky-600 transition-colors">KVKK Aydınlatma Metni</a>'ni okudum ve verilerimin işlenmesini onaylıyorum.
+                  </span>
+                </label>
               </div>
 
               <div className="mt-2 pt-4 border-t border-slate-100">
