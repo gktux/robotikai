@@ -259,46 +259,11 @@
   "announcements": {
     "items": [
       {
-        "id": 2,
-        "title": "DNEME 2",
-        "content": "",
-        "date": "14.03.2026",
+        "id": 1,
+        "title": "SAMSUN HALK EĞİTİM BİNASI SİBER GÜVENLİK TEMALI SUNUMUMUNA DAVETLİSİNİZ",
+        "content": "SİBER GÜVENLİK NEDİR? NEDEN ÖNEMLİDİR? İŞ POZİSYONLARI NELERDİR?",
+        "date": "16.03.2026",
         "isImportant": true
-      },
-      {
-        "id": 3,
-        "title": "DENEME 4",
-        "content": "",
-        "date": "14.03.2026",
-        "isImportant": true
-      },
-      {
-        "id": 5,
-        "title": "SAMSUN HALK EĞİTİM BİNASI SİBER GÜVENLİK TEMALI SUNUMUZUA DAVETLİSNİZ",
-        "content": "",
-        "date": "14.03.2026",
-        "isImportant": false
-      },
-      {
-        "id": 6,
-        "title": "deneme",
-        "content": "deneme",
-        "date": "15.03.2026",
-        "isImportant": false
-      },
-      {
-        "id": 7,
-        "title": "deneme",
-        "content": "deneme",
-        "date": "15.03.2026",
-        "isImportant": false
-      },
-      {
-        "id": 8,
-        "title": "deneme",
-        "content": "deneme",
-        "date": "15.03.2026",
-        "isImportant": false
       }
     ]
   },
