@@ -103,14 +103,6 @@
         "duration": "4 Hafta",
         "highlight": "WiFi, MQTT ve bulut dashboard'lar.",
         "content": "ESP8266/ESP32 ile WiFi üzerinden veri gönderme, MQTT protokolü ve bulut dashboard entegrasyonu. Akıllı ev ve uzaktan izleme projeleri için gerekli tüm araçlar."
-      },
-      {
-        "id": 4,
-        "title": "deneme",
-        "level": "demee",
-        "duration": "snewwm",
-        "highlight": "swnwmw",
-        "content": ""
       }
     ]
   },
@@ -122,8 +114,8 @@
       {
         "id": 1,
         "name": "ROBOTIKAI Başlangıç Arduino Kiti",
-        "price": "1.299 ₺",
-        "priceValue": 1299,
+        "price": "",
+        "priceValue": 0,
         "image": "",
         "tag": "Başlangıç",
         "info": "LED, direnç, buton, buzzer ve temel sensörlerle tam set.",
@@ -132,8 +124,8 @@
       {
         "id": 2,
         "name": "Çizgi İzleyen Robot Kiti",
-        "price": "1.899 ₺",
-        "priceValue": 1899,
+        "price": "",
+        "priceValue": 0,
         "image": "",
         "tag": "Proje",
         "info": "Motor sürücü, DC motorlar, çizgi sensörleri ve gövde.",
@@ -142,8 +134,8 @@
       {
         "id": 3,
         "name": "Akıllı Ev IoT Kiti",
-        "price": "2.499 ₺",
-        "priceValue": 2499,
+        "price": "",
+        "priceValue": 0,
         "image": "",
         "tag": "IoT",
         "info": "WiFi modülü, röle kartı, ısı/nem sensörü, ışık sensörü.",
@@ -152,8 +144,8 @@
       {
         "id": 4,
         "name": "deneme ürünü",
-        "price": "4500",
-        "priceValue": 4500,
+        "price": "",
+        "priceValue": 0,
         "image": "",
         "tag": "lot",
         "info": "deneme",
@@ -249,8 +241,15 @@
     "items": [
       {
         "id": 1,
-        "title": "denemne",
+        "title": "ROBOTİKAI YENİ ORTAKLARI İLE VİZYONUNA DEĞER KATMAYA DEVAM EDİYOR",
         "date": "14.03.2026",
+        "link": "",
+        "image": ""
+      },
+      {
+        "id": 2,
+        "title": "YENİ EĞİTİMLERLE YENİ SERTİFİKAMIZ SİZLERLE",
+        "date": "15.03.2026",
         "link": "",
         "image": ""
       }
@@ -272,7 +271,7 @@
       {
         "id": 1,
         "name": "Samsun Teknopark",
-        "logo": "https://www.samsunteknopark.com/templates/teknopark/images/logo.png",
+        "logo": "https://www.samsunteknopark.com/assets/front/images/logo/logo.svg",
         "link": "https://www.samsunteknopark.com"
       },
       {
