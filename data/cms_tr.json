@@ -291,12 +291,6 @@
         "name": "Microsoft",
         "logo": "https://www.microsoft.com/favicon.ico",
         "link": "https://www.microsoft.com"
-      },
-      {
-        "id": 5,
-        "name": "DENEME",
-        "logo": "DENEME",
-        "link": "DENEME"
       }
     ]
   }
