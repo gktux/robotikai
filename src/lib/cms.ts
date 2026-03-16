@@ -109,6 +109,9 @@ export type CmsData = {
     }[];
   };
   announcements: {
+    badge?: string;
+    title?: string;
+    intro?: string;
     items: {
       id: number;
       title: string;
@@ -191,7 +194,7 @@ export function writeCms(partial: Partial<CmsData>, locale: Locale = "tr") {
       ...(partial.news ?? {}),
     },
     announcements: {
-      ...current.announcements,
+      ...(current.announcements ?? {}),
       ...(partial.announcements ?? {}),
     },
     partners: {

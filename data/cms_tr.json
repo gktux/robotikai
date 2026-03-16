@@ -102,7 +102,12 @@
         "level": "İleri",
         "duration": "4 Hafta",
         "highlight": "WiFi, MQTT ve bulut dashboard'lar.",
-        "content": "ESP8266/ESP32 ile WiFi üzerinden veri gönderme, MQTT protokolü ve bulut dashboard entegrasyonu. Akıllı ev ve uzaktan izleme projeleri için gerekli tüm araçlar."
+        "content": "ESP8266/ESP32 ile WiFi üzerinden veri gönderme, MQTT protokolü ve bulut dashboard entegrasyonu. Akıllı ev ve uzaktan izleme projeleri için gerekli tüm araçlar.",
+        "regLabel": "Ön Kayıt",
+        "regTitle": "Şimdi Başvur",
+        "regButton": "Kayıt Ol",
+        "regLink": "/contact",
+        "regEnabled": true
       }
     ]
   },
@@ -119,7 +124,7 @@
         "image": "",
         "tag": "Başlangıç",
         "info": "LED, direnç, buton, buzzer ve temel sensörlerle tam set.",
-        "description": "Arduino Uno R3, breadboard, jumper kablolar, LED'ler, dirençler, butonlar, buzzer, LDR ve ısı sensörü içeren tam başlangıç seti. Eğitimlerle uyumlu çalışır."
+        "description": "Arduino Uno R3, breadboard, jumper kablolar, LED'ler, dirençler, butonlar, buzzer, LDR ve ısı sensörü içeren tam başlangıç seti. Eğitimlerle uyumlu çalışır.."
       },
       {
         "id": 2,
@@ -251,17 +256,27 @@
         "title": "YENİ EĞİTİMLERLE YENİ SERTİFİKAMIZ SİZLERLE",
         "date": "15.03.2026",
         "link": "",
-        "image": ""
+        "image": "/uploads/1"
       }
     ]
   },
   "announcements": {
+    "badge": "BILGILENDIRME",
+    "title": "Duyurular & Bildirimler",
+    "intro": "Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler. Akıştan geri kalmayın.",
     "items": [
       {
         "id": 1,
         "title": "SAMSUN HALK EĞİTİM BİNASI SİBER GÜVENLİK TEMALI SUNUMUMUNA DAVETLİSİNİZ",
         "content": "SİBER GÜVENLİK NEDİR? NEDEN ÖNEMLİDİR? İŞ POZİSYONLARI NELERDİR?",
         "date": "16.03.2026",
+        "isImportant": true
+      },
+      {
+        "id": 2,
+        "title": "BİLİM FORMULÜ Dershanesi Konferans Ve Eğitim Görüşmelerimiz Başarılı Şekilde Sonuçlandırdık.",
+        "content": "Yakın zamanda BİLİM FORMÜLÜ dershanesi kurumu öğrencileri ile uygulamalı yüz yüze eğitime başlayacağız.",
+        "date": "17.03.2026",
         "isImportant": true
       }
     ]
@@ -291,6 +306,12 @@
         "name": "Microsoft",
         "logo": "https://www.microsoft.com/favicon.ico",
         "link": "https://www.microsoft.com"
+      },
+      {
+        "id": 5,
+        "name": "BİLİM FORMULU",
+        "logo": "https://bilimformulu.com/wp-content/uploads/2020/01/1.png",
+        "link": "https://bilimformulu.com/"
       }
     ]
   }

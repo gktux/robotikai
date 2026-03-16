@@ -1,5 +1,7 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
-import Link from "next/link";
+import { revalidatePath } from "next/cache";
+import { NewsManager } from "@/components/admin/NewsManager";
+import { NewsAddForm } from "@/components/admin/NewsForms";
 
 async function addNews(formData: FormData) {
   "use server";
@@ -34,6 +36,8 @@ async function addNews(formData: FormData) {
       ],
     },
   }, locale);
+  revalidatePath("/admin/news");
+  revalidatePath("/");
 }
 
 async function deleteNews(formData: FormData) {
@@ -52,6 +56,8 @@ async function deleteNews(formData: FormData) {
       items: items.filter((item) => item.id !== id),
     },
   }, locale);
+  revalidatePath("/admin/news");
+  revalidatePath("/");
 }
 
 async function updateNews(formData: FormData) {
@@ -86,135 +92,57 @@ async function updateNews(formData: FormData) {
       items: updatedItems,
     },
   }, locale);
+  revalidatePath("/admin/news");
+  revalidatePath("/");
 }
 
 export default async function AdminNewsPage() {
   const cms = await readCmsWithLocale();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
-      <header className="mb-6 space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-600 dark:text-sky-400">
+    <div className="mx-auto max-w-6xl px-4 py-10 md:py-14 text-slate-900 dark:text-slate-100">
+      <header className="mb-10 space-y-2">
+        <p className="text-xs font-black uppercase tracking-[0.3em] text-sky-600 dark:text-sky-400">
           ROBOTIKAI • Haberler
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight md:text-3xl dark:text-slate-100">
+        <h1 className="text-3xl font-black tracking-tighter md:text-4xl">
           Haber Yönetimi
         </h1>
-        <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-400">
-          Anasayfada yanyana kayan haberleri buradan yönetebilirsin.
+        <p className="max-w-2xl text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
+          Anasayfada yanyana kayan haber şeridini buradan yönetebilirsin.
         </p>
       </header>
 
-      <section className="mb-8 space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-          Mevcut Haberler
-        </h2>
-        <div className="space-y-3">
-          {(cms.news?.items || []).map((item: any) => (
-            <div
-              key={item.id}
-              className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50/80 p-3 md:grid-cols-[1.6fr,1.6fr,0.9fr,auto] dark:border-slate-800 dark:bg-slate-800/50"
-            >
-              <form action={updateNews} className="contents">
-                <input type="hidden" name="id" value={item.id} />
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Başlık</label>
-                  <input
-                    name="title"
-                    defaultValue={item.title}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Resim URL</label>
-                  <input
-                    name="image"
-                    defaultValue={item.image}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                    placeholder="/uploads/..."
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Link</label>
-                  <input
-                    name="link"
-                    defaultValue={item.link}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                    placeholder="https://..."
-                  />
-                </div>
-                <div className="flex items-end gap-2">
-                  <div className="space-y-1.5">
-                    <label className="text-[11px] text-slate-600 dark:text-slate-400">Tarih</label>
-                    <input
-                      name="date"
-                      defaultValue={item.date}
-                      className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-sky-500"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="h-[32px] rounded-lg bg-sky-500 px-3 text-xs font-bold text-white transition hover:bg-sky-400"
-                  >
-                    💾
-                  </button>
-                </div>
-              </form>
-              <form action={deleteNews} className="flex items-end">
-                <input type="hidden" name="id" value={item.id} />
-                <button
-                  type="submit"
-                  className="h-[32px] rounded-lg bg-red-100 px-3 text-xs font-bold text-red-600 transition hover:bg-red-200"
-                >
-                  Sil
-                </button>
-              </form>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className="grid gap-10 lg:grid-cols-[1fr,380px]">
+        {/* Sol: Mevcut Haberler */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+              Yayınlanmış Haberler
+            </h2>
+            <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full uppercase">{cms.news?.items?.length || 0} İçerik</span>
+          </div>
+          
+          <NewsManager 
+            items={cms.news?.items || []} 
+            updateAction={updateNews} 
+            deleteAction={deleteNews} 
+          />
+        </section>
 
-      <section className="space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Yeni Haber Ekle</h2>
-        <form action={addNews} className="grid md:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Başlık</label>
-            <input
-              name="title"
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-            />
+        {/* Sağ: Yeni Ekle */}
+        <section className="space-y-6">
+          <div className="sticky top-24 rounded-[3rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/40 dark:border-slate-800 dark:bg-slate-900/90 dark:shadow-none transition-all">
+            <div className="mb-8">
+              <h2 className="text-xl font-black text-slate-900 dark:text-slate-100">Yeni Haber Ekle</h2>
+              <p className="text-xs text-slate-400 font-bold mt-1 uppercase tracking-widest">Haber Akışına Ekle</p>
+            </div>
+            
+            <NewsAddForm addAction={addNews} />
           </div>
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Resim URL</label>
-            <input
-              name="image"
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-              placeholder="/uploads/..."
-            />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Link</label>
-            <input
-              name="link"
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-            />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Tarih</label>
-            <input
-              name="date"
-              defaultValue={new Date().toLocaleDateString("tr-TR")}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-            />
-          </div>
-          <button
-            type="submit"
-            className="md:col-span-2 rounded-full bg-sky-500 px-6 py-2.5 text-xs font-bold text-white transition hover:bg-sky-400"
-          >
-            Haber Ekle
-          </button>
-        </form>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

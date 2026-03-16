@@ -1,6 +1,7 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
-import Link from "next/link";
 import { revalidatePath } from "next/cache";
+import { PartnersManager } from "@/components/admin/PartnersManager";
+import { PartnerAddForm } from "@/components/admin/PartnerForms";
 
 async function addPartner(formData: FormData) {
   "use server";
@@ -95,120 +96,49 @@ export default async function AdminPartnersPage() {
   const cms = await readCmsWithLocale();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
-      <header className="mb-6 space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fuchsia-600 dark:text-fuchsia-400">
+    <div className="mx-auto max-w-6xl px-4 py-10 md:py-14 text-slate-900 dark:text-slate-100">
+      <header className="mb-10 space-y-2">
+        <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-600 dark:text-fuchsia-400">
           ROBOTIKAI • Sponsorlar
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight md:text-3xl dark:text-slate-100">
+        <h1 className="text-3xl font-black tracking-tighter md:text-4xl">
           Sponsor Yönetimi
         </h1>
-        <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+        <p className="max-w-2xl text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
           Anasayfada sergilenen çözüm ortaklarını ve sponsorları buradan yönetebilirsin.
         </p>
       </header>
 
-      <section className="mb-8 space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-          Mevcut Sponsorlar
-        </h2>
-        <div className="space-y-3">
-          {(cms.partners?.items || []).map((item: any) => (
-            <div
-              key={item.id}
-              className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50/80 p-3 md:grid-cols-[1.2fr,1.5fr,1.3fr,auto] dark:border-slate-800 dark:bg-slate-800/50"
-            >
-              <form action={updatePartner} className="contents">
-                <input type="hidden" name="id" value={item.id} />
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Kurum Adı</label>
-                  <input
-                    name="name"
-                    defaultValue={item.name}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Logo URL</label>
-                  <input
-                    name="logo"
-                    defaultValue={item.logo}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                    placeholder="https://... veya /uploads/..."
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] text-slate-600 dark:text-slate-400">Web Sitesi</label>
-                  <input
-                    name="link"
-                    defaultValue={item.link}
-                    className="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-900 outline-none focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                    placeholder="https://..."
-                  />
-                </div>
-                <div className="flex items-end">
-                  <button
-                    type="submit"
-                    className="h-[32px] rounded-lg bg-fuchsia-500 px-3 text-xs font-bold text-white transition hover:bg-fuchsia-400"
-                  >
-                    💾
-                  </button>
-                </div>
-              </form>
-              <form action={deletePartner} className="flex items-end">
-                <input type="hidden" name="id" value={item.id} />
-                <button
-                  type="submit"
-                  className="h-[32px] rounded-lg bg-red-100 px-3 text-xs font-bold text-red-600 transition hover:bg-red-200"
-                >
-                  Sil
-                </button>
-              </form>
-            </div>
-          ))}
-          {(cms.partners?.items || []).length === 0 && (
-            <p className="py-4 text-center text-xs text-slate-500 italic">Henüz sponsor eklenmemiş.</p>
-          )}
-        </div>
-      </section>
+      <div className="grid gap-10 lg:grid-cols-[1fr,380px]">
+        {/* Sol: Mevcut Sponsorlar */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-fuchsia-500"></span>
+              Aktif Sponsorlar
+            </h2>
+            <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full uppercase">{cms.partners?.items?.length || 0} Kurum</span>
+          </div>
+          
+          <PartnersManager 
+            items={cms.partners?.items || []} 
+            updateAction={updatePartner} 
+            deleteAction={deletePartner} 
+          />
+        </section>
 
-      <section className="space-y-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm shadow-slate-200 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-none">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Yeni Sponsor Ekle</h2>
-        <form action={addPartner} className="grid md:grid-cols-3 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Kurum Adı</label>
-            <input
-              name="name"
-              required
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-              placeholder="Google, Microsoft vb."
-            />
+        {/* Sağ: Yeni Ekle */}
+        <section className="space-y-6">
+          <div className="sticky top-24 rounded-[3rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/40 dark:border-slate-800 dark:bg-slate-900/90 dark:shadow-none transition-all">
+            <div className="mb-8">
+              <h2 className="text-xl font-black text-slate-900 dark:text-slate-100">Yeni Sponsor Ekle</h2>
+              <p className="text-xs text-slate-400 font-bold mt-1 uppercase tracking-widest">Ağımıza Kat</p>
+            </div>
+            
+            <PartnerAddForm addAction={addPartner} />
           </div>
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Logo URL</label>
-            <input
-              name="logo"
-              required
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-              placeholder="https://..."
-            />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-slate-700 dark:text-slate-400">Web Sitesi</label>
-            <input
-              name="link"
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-              placeholder="https://..."
-            />
-          </div>
-          <button
-            type="submit"
-            className="md:col-span-3 rounded-full bg-fuchsia-600 px-6 py-2.5 text-xs font-bold text-white transition hover:bg-fuchsia-500"
-          >
-            Sponsor Ekle
-          </button>
-        </form>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

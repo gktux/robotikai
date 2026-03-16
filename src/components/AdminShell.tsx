@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { logoutAdmin } from "@/app/admin/login/actions";
+import { AdminProvider } from "./admin/AdminContext";
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,7 +13,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-64px)] gap-6 transition-colors duration-300">
+    <AdminProvider>
+      <div className="flex min-h-[calc(100vh-64px)] gap-6 transition-colors duration-300">
       <aside className="w-52 shrink-0 border-r border-slate-200 bg-white/80 p-4 dark:border-slate-800 dark:bg-slate-900/80">
         <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
           ROBOTIKAI Admin
@@ -47,6 +49,36 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             }`}
           >
             Site Ayarları
+          </Link>
+          <Link
+            href="/admin/announcements"
+            className={`block rounded-lg px-3 py-2 transition ${
+              pathname?.startsWith("/admin/announcements")
+                ? "bg-sky-50 font-semibold text-sky-700 dark:bg-sky-900/30 dark:text-sky-400"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
+            }`}
+          >
+            Duyurular
+          </Link>
+          <Link
+            href="/admin/news"
+            className={`block rounded-lg px-3 py-2 transition ${
+              pathname?.startsWith("/admin/news")
+                ? "bg-sky-50 font-semibold text-sky-700 dark:bg-sky-900/30 dark:text-sky-400"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
+            }`}
+          >
+            Haberler
+          </Link>
+          <Link
+            href="/admin/partners"
+            className={`block rounded-lg px-3 py-2 transition ${
+              pathname?.startsWith("/admin/partners")
+                ? "bg-sky-50 font-semibold text-sky-700 dark:bg-sky-900/30 dark:text-sky-400"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
+            }`}
+          >
+            Sponsorlar
           </Link>
           <Link
             href="/admin/courses"
@@ -123,5 +155,6 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       </aside>
       <div className="flex-1 text-slate-900 dark:text-slate-100">{children}</div>
     </div>
+    </AdminProvider>
   );
 }

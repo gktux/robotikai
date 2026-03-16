@@ -2,7 +2,7 @@
   {
     "id": 1,
     "date": "2026-03-15T12:11:44.943Z",
-    "status": "tamamlandi",
+    "status": "beklemede",
     "locale": "tr",
     "customer": {
       "name": "Berat Pamuk",
@@ -24,7 +24,7 @@
   {
     "id": 2,
     "date": "2026-03-15T12:17:34.624Z",
-    "status": "pending",
+    "status": "beklemede",
     "locale": "tr",
     "customer": {
       "name": "Berat Pamuk",
@@ -46,7 +46,7 @@
   {
     "id": 3,
     "date": "2026-03-15T12:18:25.114Z",
-    "status": "tamamlandi",
+    "status": "kargoda",
     "locale": "tr",
     "customer": {
       "name": "Berat Pamuk",

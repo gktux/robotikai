@@ -1,7 +1,6 @@
 import { readCmsWithLocale, writeCms, readCms, getLocale } from "@/lib/cms";
-import { EditorField } from "@/components/EditorField";
-import { CollapsibleSection } from "@/components/admin/CollapsibleSection";
-import { DeleteButton } from "@/components/admin/DeleteButton";
+import { revalidatePath } from "next/cache";
+import { CoursesManager, CourseAddForm } from "@/components/admin/CoursesManager";
 
 async function addCourse(formData: FormData) {
   "use server";
@@ -48,6 +47,8 @@ async function addCourse(formData: FormData) {
       ],
     },
   }, locale);
+  revalidatePath("/admin/courses");
+  revalidatePath("/");
 }
 
 async function deleteCourse(formData: FormData) {
@@ -66,6 +67,8 @@ async function deleteCourse(formData: FormData) {
       items: items.filter((item) => item.id !== id),
     },
   }, locale);
+  revalidatePath("/admin/courses");
+  revalidatePath("/");
 }
 
 async function updateCourse(formData: FormData) {
@@ -112,237 +115,52 @@ async function updateCourse(formData: FormData) {
       items: updatedItems,
     },
   }, locale);
+  revalidatePath("/admin/courses");
+  revalidatePath("/");
 }
 
 export default async function AdminCoursesPage() {
   const cms = await readCmsWithLocale();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
-      <header className="mb-6 space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-600 dark:text-indigo-400">
+    <div className="mx-auto max-w-6xl px-4 py-10 md:py-14 text-slate-900 dark:text-slate-100">
+      <header className="mb-10 space-y-2">
+        <p className="text-xs font-black uppercase tracking-[0.3em] text-indigo-600 dark:text-indigo-400">
           ROBOTIKAI • Eğitimler
         </p>
-        <h1 className="text-2xl font-semibold tracking-tight md:text-3xl dark:text-slate-100">
-          Eğitim Programları Yönetimi
+        <h1 className="text-3xl font-black tracking-tighter md:text-4xl">
+          Eğitim Programları
         </h1>
-        <p className="max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+        <p className="max-w-2xl text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
           Buradan sitede görünen eğitim programlarını ekleyebilir, düzenleyebilir
-          veya silebilirsin. /courses sayfası her zaman bu listedeki verileri
-          kullanır.
+          veya silebilirsin.
         </p>
       </header>
 
-      <section className="mb-8 space-y-4">
-        <h2 className="px-1 text-sm font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
-          Mevcut Eğitim Programları
-        </h2>
-        <div className="space-y-4">
-          {cms.courses.items.map((course: any) => (
-            <CollapsibleSection 
-              key={course.id} 
-              title={course.title} 
-              badge={`${course.level} Seviye`}
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>}
-            >
-              <div className="grid gap-4">
-                <form action={updateCourse} className="space-y-4">
-                  <input type="hidden" name="id" value={course.id} />
-                  <div className="grid gap-4 md:grid-cols-3">
-                    <div className="space-y-1.5 md:col-span-1">
-                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Başlık</label>
-                      <input
-                        name="title"
-                        defaultValue={course.title}
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Seviye</label>
-                      <input
-                        name="level"
-                        defaultValue={course.level}
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Süre</label>
-                      <input
-                        name="duration"
-                        defaultValue={course.duration}
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Kısa Açıklama (Highlight)</label>
-                    <input
-                      name="highlight"
-                      defaultValue={course.highlight}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                    />
-                  </div>
-
-                  <div className="rounded-2xl border border-indigo-100 bg-indigo-50/30 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
-                    <div className="mb-3 flex items-center justify-between">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Kayıt / Başvuru Alanı</h3>
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="regEnabled" defaultChecked={course.regEnabled !== false} className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500" />
-                        <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Aktif</span>
-                      </label>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold uppercase text-slate-500">Etiket (Örn: Ön Kayıt)</label>
-                        <input name="regLabel" defaultValue={course.regLabel ?? "Ön Kayıt"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold uppercase text-slate-500">Başlık (Örn: Şimdi Başvur)</label>
-                        <input name="regTitle" defaultValue={course.regTitle ?? "Şimdi Başvur"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold uppercase text-slate-500">Buton (Örn: Kayıt Ol)</label>
-                        <input name="regButton" defaultValue={course.regButton ?? "Kayıt Ol"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold uppercase text-slate-500">Link (Örn: /contact)</label>
-                        <input name="regLink" defaultValue={course.regLink ?? "/contact"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Detay İçerik</label>
-                    <EditorField 
-                      name="content" 
-                      defaultValue={(course as { content?: string }).content} 
-                    />
-                  </div>
-                  
-                  <div className="flex justify-end pt-2">
-                    <button
-                      type="submit"
-                      className="rounded-full bg-indigo-500 px-8 py-2.5 text-xs font-bold text-white transition hover:bg-indigo-400 shadow-lg shadow-indigo-500/20"
-                    >
-                      💾 Değişiklikleri Kaydet
-                    </button>
-                  </div>
-                </form>
-                <div className="border-t border-slate-100 pt-3 dark:border-slate-800">
-                  <form action={deleteCourse}>
-                    <input type="hidden" name="id" value={course.id} />
-                    <DeleteButton 
-                      label="Eğitimi Tamamen Sil" 
-                      confirmMessage="Bu eğitim programını silmek istediğinize emin misiniz? Bu işlem geri alınamaz." 
-                    />
-                  </form>
-                </div>
-              </div>
-            </CollapsibleSection>
-          ))}
-          {cms.courses.items.length === 0 && (
-             <div className="py-12 text-center rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800">
-                <p className="text-sm text-slate-500">Henüz hiç eğitim programı eklenmemiş.</p>
-             </div>
-          )}
+      <section className="mb-12 space-y-6">
+        <div className="flex items-center justify-between px-2">
+            <h2 className="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+              Aktif Programlar
+            </h2>
+            <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full uppercase tracking-tighter">{cms.courses.items.length} PROGRAM</span>
         </div>
+        
+        <CoursesManager 
+            items={cms.courses.items} 
+            updateAction={updateCourse} 
+            deleteAction={deleteCourse} 
+        />
       </section>
 
-      <CollapsibleSection 
-        title="Yeni Eğitim Ekle" 
-        defaultOpen={false}
-        className="border-indigo-200 bg-indigo-50/20 dark:border-indigo-900/40 dark:bg-indigo-950/20"
-        icon={<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>}
-      >
-        <form action={addCourse} className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-3">
-             <div className="space-y-1.5 md:col-span-1">
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="title">Başlık</label>
-                <input
-                  id="title"
-                  name="title"
-                  required
-                  placeholder="Örn: İleri Seviye Robotik"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                />
-             </div>
-             <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="level">Seviye</label>
-                <input
-                  id="level"
-                  name="level"
-                  required
-                  placeholder="Örn: Başlangıç"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                />
-             </div>
-             <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="duration">Süre</label>
-                <input
-                  id="duration"
-                  name="duration"
-                  required
-                  placeholder="Örn: 8 Hafta"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                />
-             </div>
-          </div>
-          
-          <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="highlight">Kısa Açıklama</label>
-            <input
-              id="highlight"
-              name="highlight"
-              required
-              placeholder="Programın kısa, çarpıcı özeti..."
-              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-            />
-          </div>
-
-          <div className="rounded-2xl border border-indigo-100 bg-white/50 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
-            <div className="mb-3 flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Kayıt / Başvuru Alanı</h3>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="regEnabled" defaultChecked={true} className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500" />
-                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400">Aktif</span>
-              </label>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-slate-500">Etiket</label>
-                <input name="regLabel" placeholder="Ön Kayıt" defaultValue="Ön Kayıt" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-slate-500">Başlık</label>
-                <input name="regTitle" placeholder="Şimdi Başvur" defaultValue="Şimdi Başvur" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-slate-500">Buton Metni</label>
-                <input name="regButton" placeholder="Kayıt Ol" defaultValue="Kayıt Ol" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-slate-500">Hedef Link</label>
-                <input name="regLink" placeholder="/contact" defaultValue="/contact" className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950" />
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-[11px] font-bold text-slate-700 dark:text-slate-400" htmlFor="content">Detay İçerik (opsiyonel)</label>
-            <EditorField name="content" />
-          </div>
-          
-          <button
-            type="submit"
-            className="w-full rounded-full bg-indigo-600 py-3 text-xs font-bold text-white transition hover:bg-indigo-500 shadow-lg shadow-indigo-600/20"
-          >
-            🚀 Eğitimi Yayınla
-          </button>
-        </form>
-      </CollapsibleSection>
+      <section className="space-y-6 rounded-[3rem] border border-indigo-100 bg-white p-10 shadow-xl shadow-indigo-100/20 dark:border-indigo-900/40 dark:bg-slate-900/80 dark:shadow-none">
+        <div className="mb-8">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">Yeni Eğitim Ekle</h2>
+            <p className="text-xs text-indigo-500 font-bold mt-1 uppercase tracking-widest">Katalog Genişlet</p>
+        </div>
+        
+        <CourseAddForm addAction={addCourse} />
+      </section>
     </div>
   );
 }
-

@@ -212,11 +212,15 @@ export default async function Home() {
             <div className="mx-auto max-w-6xl px-4">
               <header className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="space-y-2">
-                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500">BILGILENDIRME</p>
-                  <h2 className="text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Duyurular & Bildirimler</h2>
+                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500">
+                    {cms.announcements.badge || "BILGILENDIRME"}
+                  </p>
+                  <h2 className="text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                    {cms.announcements.title || "Duyurular & Bildirimler"}
+                  </h2>
                 </div>
                 <p className="text-sm text-slate-500 max-w-sm leading-relaxed border-l-2 border-amber-500/30 pl-6 py-1">
-                  Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler. Akıştan geri kalmayın.
+                  {cms.announcements.intro || "Platformumuzla ilgili en güncel teknik ve genel bilgilendirmeler. Akıştan geri kalmayın."}
                 </p>
               </header>
               

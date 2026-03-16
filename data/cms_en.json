@@ -215,6 +215,9 @@
     "items": []
   },
   "announcements": {
+    "badge": "ANNOUNCEMENTS",
+    "title": "Announcements & Updates",
+    "intro": "The most up-to-date technical and general information about our platform. Stay in the loop.",
     "items": []
   },
   "partners": {
