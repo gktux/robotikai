@@ -5,11 +5,11 @@ import { useAdmin } from "./AdminContext";
 interface ProductItem {
   id: number;
   name: string;
-  price: string;
-  priceValue: number;
-  image: string;
-  tag: string;
-  info: string;
+  price?: string;
+  priceValue?: number;
+  image?: string;
+  tag?: string;
+  info?: string;
   description?: string;
 }
 

@@ -5,8 +5,8 @@ import { useAdmin } from "./AdminContext";
 interface PartnerItem {
   id: number;
   name: string;
-  logo: string;
-  link: string;
+  logo?: string;
+  link?: string;
 }
 
 export function PartnersManager({ 

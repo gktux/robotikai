@@ -7,9 +7,9 @@ import { EditorField } from "@/components/EditorField";
 interface CourseItem {
   id: number;
   title: string;
-  level: string;
-  duration: string;
-  highlight: string;
+  level?: string;
+  duration?: string;
+  highlight?: string;
   content?: string;
   regLabel?: string;
   regTitle?: string;

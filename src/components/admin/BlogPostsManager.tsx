@@ -10,7 +10,7 @@ interface BlogPostItem {
   category: string;
   excerpt: string;
   content?: string;
-  image: string;
+  image?: string;
 }
 
 export function BlogPostsManager({ 

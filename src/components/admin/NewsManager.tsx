@@ -5,9 +5,9 @@ import { useAdmin } from "./AdminContext";
 interface NewsItem {
   id: number;
   title: string;
-  date: string;
-  link: string;
-  image: string;
+  date?: string;
+  link?: string;
+  image?: string;
 }
 
 export function NewsManager({ 
