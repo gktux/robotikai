@@ -1,6 +1,7 @@
 "use client";
 
 import { useAdmin } from "./AdminContext";
+import { ImageUploadField } from "./ImageUploadField";
 
 interface NewsItem {
   id: number;
@@ -68,15 +69,12 @@ export function NewsManager({
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-900 outline-none focus:border-sky-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
               />
             </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Resim URL</label>
-              <input
+            <ImageUploadField
                 name="image"
                 defaultValue={item.image}
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-900 outline-none focus:border-sky-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
-                placeholder="/uploads/..."
-              />
-            </div>
+                label="Haber Görseli"
+                className="md:col-span-1"
+            />
             <div className="space-y-1.5">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Link</label>
               <input

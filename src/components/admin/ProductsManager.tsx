@@ -1,6 +1,7 @@
 "use client";
 
 import { useAdmin } from "./AdminContext";
+import { ImageUploadField } from "./ImageUploadField";
 
 interface ProductItem {
   id: number;
@@ -106,25 +107,11 @@ export function ProductsManager({
             </div>
 
             <div className="space-y-3 flex-1">
-              <div className="space-y-1.5">
-                 <label className="text-[10px] font-black uppercase tracking-widest text-fuchsia-400 px-1">Görsel URL</label>
-                <div className="flex items-center gap-3 rounded-2xl border border-fuchsia-100 bg-fuchsia-50/30 px-3 py-2 transition-all dark:border-fuchsia-900/50 dark:bg-fuchsia-900/20">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm overflow-hidden dark:bg-slate-800 border border-fuchsia-100 dark:border-fuchsia-900/30">
-                    {product.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                      <img src={product.image} alt="" className="h-full w-full object-cover" />
-                    ) : (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-fuchsia-300 dark:text-fuchsia-500"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                    )}
-                  </div>
-                  <input
-                    name="image"
-                    defaultValue={product.image}
-                    placeholder="https://..."
-                    className="w-full bg-transparent p-1 text-xs text-slate-700 outline-none dark:text-pink-100 font-medium"
-                  />
-                </div>
-              </div>
+            <ImageUploadField
+                name="image"
+                defaultValue={product.image}
+                label="Ürün Görseli"
+            />
               <div className="space-y-1.5">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Kısa Açıklama (Vitrin)</label>
                 <textarea
@@ -244,14 +231,11 @@ export function ProductAddForm({
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">
-        <div className="space-y-1.5">
-          <label className="text-[11px] font-black uppercase tracking-widest text-fuchsia-400 px-1">Görsel URL</label>
-          <input
-            name="image"
-            placeholder="/uploads/urun.jpg"
-            className="w-full rounded-2xl border border-fuchsia-100 bg-fuchsia-50/20 px-4 py-3 text-sm text-slate-900 outline-none focus:border-fuchsia-400 dark:border-fuchsia-900/50 dark:bg-fuchsia-900/10 dark:text-slate-100 font-medium"
-          />
-        </div>
+        <ImageUploadField
+          name="image"
+          label="Ürün Görseli"
+          placeholder="Görsel URL veya dosya seçin"
+        />
         <div className="space-y-1.5 md:col-span-2">
           <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 px-1">Detaylı Açıklama</label>
           <textarea

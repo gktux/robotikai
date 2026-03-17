@@ -1,6 +1,7 @@
 "use client";
 
 import { useAdmin } from "./AdminContext";
+import { ImageUploadField } from "./ImageUploadField";
 
 export function NewsAddForm({ 
   addAction 
@@ -32,14 +33,11 @@ export function NewsAddForm({
           className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-all"
         />
       </div>
-      <div className="space-y-1.5">
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Resim URL</label>
-        <input
-          name="image"
-          placeholder="/uploads/resim.jpg"
-          className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-all"
-        />
-      </div>
+      <ImageUploadField
+        name="image"
+        label="Haber Görseli"
+        placeholder="Görsel URL veya dosya seçin"
+      />
       <div className="space-y-1.5">
         <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Haber Linki</label>
         <input

@@ -3,6 +3,7 @@
 import { useAdmin } from "./AdminContext";
 import { CollapsibleSection } from "./CollapsibleSection";
 import { EditorField } from "@/components/EditorField";
+import { ImageUploadField } from "./ImageUploadField";
 
 interface BlogPostItem {
   id: number;
@@ -81,14 +82,11 @@ export function BlogPostsManager({
                   />
                 </div>
               </div>
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 px-1">Kapak Resmi URL</label>
-                <input
-                  name="image"
-                  defaultValue={post.image}
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-600 outline-none focus:border-sky-400 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 font-medium"
-                />
-              </div>
+              <ImageUploadField
+                name="image"
+                defaultValue={post.image}
+                label="Kapak Resmi"
+              />
               <div className="space-y-1.5">
                 <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 px-1">Kısa Özet</label>
                 <textarea
@@ -174,15 +172,11 @@ export function BlogPostAddForm({
           />
         </div>
       </div>
-      <div className="space-y-1.5">
-        <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 px-1" htmlFor="image-blog-add">Kapak Resmi URL</label>
-        <input
-          id="image-blog-add"
-          name="image"
-          placeholder="https://... veya /uploads/..."
-          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 transition-all"
-        />
-      </div>
+      <ImageUploadField
+        name="image"
+        label="Kapak Resmi"
+        placeholder="Resim URL yazın veya yükleyin"
+      />
       <div className="space-y-1.5">
         <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 px-1" htmlFor="excerpt-blog-add">Kısa Özet</label>
         <textarea

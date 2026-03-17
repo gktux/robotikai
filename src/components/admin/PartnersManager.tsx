@@ -1,6 +1,7 @@
 "use client";
 
 import { useAdmin } from "./AdminContext";
+import { ImageUploadField } from "./ImageUploadField";
 
 interface PartnerItem {
   id: number;
@@ -67,15 +68,11 @@ export function PartnersManager({
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs font-semibold text-slate-900 outline-none focus:border-fuchsia-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
               />
             </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Logo URL</label>
-              <input
+            <ImageUploadField
                 name="logo"
                 defaultValue={item.logo}
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-900 outline-none focus:border-fuchsia-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
-                placeholder="/uploads/..."
-              />
-            </div>
+                label="Logo"
+            />
             <div className="space-y-1.5">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1">Web Sitesi</label>
               <input
