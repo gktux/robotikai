@@ -56,7 +56,7 @@ export default function AdminMessagesPage() {
           {messages
             .slice()
             .reverse()
-            .map((m: { id: number; name: string; email: string; message: string; createdAt: string }) => (
+            .map((m: { id: number; name: string; email: string; message: string; createdAt: string; ip?: string }) => (
               <div
                 key={m.id}
                 className="group relative rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-sky-100 hover:shadow-lg hover:shadow-sky-500/5 dark:border-slate-800 dark:bg-slate-900/80 dark:hover:border-sky-900/40"
@@ -64,7 +64,14 @@ export default function AdminMessagesPage() {
                 <div className="mb-3 flex items-start justify-between">
                   <div className="space-y-1">
                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400">GÖNDEREN</p>
-                     <p className="font-semibold text-slate-900 dark:text-slate-100">{m.name || "İsimsiz Kullanıcı"}</p>
+                     <div className="flex items-center gap-3">
+                       <p className="font-semibold text-slate-900 dark:text-slate-100">{m.name || "İsimsiz Kullanıcı"}</p>
+                       {m.ip && (
+                         <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-mono text-slate-500 dark:bg-slate-800 dark:text-slate-400 border border-slate-200 dark:border-slate-700" title="Gönderici IP Adresi">
+                           IP: {m.ip}
+                         </span>
+                       )}
+                     </div>
                      <p className="text-sm text-sky-600 dark:text-sky-400">{m.email}</p>
                   </div>
                   <div className="text-right space-y-2">

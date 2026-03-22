@@ -18,6 +18,15 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, message } = body;
 
+    const forwardedFor = request.headers.get("x-forwarded-for");
+    const realIp = request.headers.get("x-real-ip");
+    let ip = forwardedFor?.split(",")[0] || realIp || "127.0.0.1";
+    
+    if (ip === "::1" || ip === "::ffff:127.0.0.1") {
+      ip = "127.0.0.1 (Localhost)";
+    }
+    ip = ip.trim();
+
     if (!email?.trim()) {
       return NextResponse.json(
         { error: "E-posta gerekli." },
@@ -31,6 +40,7 @@ export async function POST(request: NextRequest) {
       name: String(name ?? "").trim(),
       email: String(email ?? "").trim(),
       message: String(message ?? "").trim(),
+      ip: ip,
       createdAt: new Date().toISOString(),
     });
     fs.writeFileSync(MESSAGES_FILE, JSON.stringify(messages, null, 2), "utf-8");

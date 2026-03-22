@@ -43,7 +43,13 @@ export async function getClientIp() {
   const headersList = await headers();
   const forwardedFor = headersList.get("x-forwarded-for");
   const realIp = headersList.get("x-real-ip");
-  return forwardedFor?.split(",")[0] || realIp || "unknown-ip";
+  let ip = forwardedFor?.split(",")[0] || realIp || "127.0.0.1";
+  
+  if (ip === "::1" || ip === "::ffff:127.0.0.1") {
+    ip = "127.0.0.1 (Localhost)";
+  }
+  
+  return ip.trim();
 }
 
 export async function checkRateLimit() {

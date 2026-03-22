@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 import { checkRateLimit, logFailedAttempt, resetAttempts } from "@/lib/security";
 
@@ -51,6 +52,7 @@ export async function loginAdmin(formData: FormData) {
   } else {
     // 4. Log failed attempt for brute-force protection
     await logFailedAttempt();
+    revalidatePath("/admin/security");
     
     // Şifre yanlışsa tekrar login sayfasına yönlendirip hata parametresi ekle
     redirect("/admin/login?error=invalid_credentials");
