@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { readCms } from '@/lib/cms'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://robotikai.com'
+  const baseUrl = 'https://robotikai.com.tr'
   const cms = readCms('tr')
 
   const staticPages = [
