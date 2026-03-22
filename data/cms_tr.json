@@ -1,6 +1,6 @@
 {
   "site": {
-    "brandName": "ROBOTIKAI",
+    "brandName": "ROBOTIKAI | Arduino & Robotik Akademi",
     "tagline": "Arduino & Robotik Akademi",
     "footerLine1": "Arduino & Robotik Eğitim Platformu",
     "footerLine2": "Blog, eğitim ve kit satış altyapısı."
@@ -69,8 +69,8 @@
     ]
   },
   "contact": {
-    "intro": "Eğitimler, kurumsal işbirlikleri veya toplu kit alımları için aşağıdaki formu doldurabilir ya da iletişim bilgilerini kullanabilirsin.",
-    "infoText": "Buradaki bilgiler placeholder. Kendi adresini, telefonunu ve e-posta adresini admin panelinden yönetilebilir yapacağız.",
+    "intro": "",
+    "infoText": "",
     "email": "info@robotikai.com",
     "phone": "+90 (000) 000 00 00",
     "address": "İstanbul / Türkiye (örn. eğitim ofisi)"

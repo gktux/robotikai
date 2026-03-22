@@ -313,6 +313,20 @@ body {
   100% { filter: brightness(1.2) contrast(1.1); }
 }
 
+/* Premium Logo Hover Effects */
+.logo-premium-glow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .logo-premium-glow {
+  filter: drop-shadow(0 0 12px rgba(45, 212, 191, 0.4));
+  transform: scale(1.05);
+}
+
+.dark .group:hover .logo-premium-glow {
+  filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.6));
+}
+
 /* Vibrant Header Classes - Clean Version */
 .header-glass-vibrant {
   background: rgba(255, 255, 255, 0.7);

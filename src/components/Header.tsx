@@ -70,12 +70,12 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
                 <img 
                   src="/Logo.png" 
                   alt="RobotikAI Logo" 
-                  className="h-full w-auto object-contain dark:hidden transition-transform duration-500" 
+                  className="h-full w-auto object-contain dark:hidden logo-premium-glow" 
                 />
                 <img 
                   src="/Logo (Beyaz).png" 
                   alt="RobotikAI Logo" 
-                  className="h-full w-auto object-contain hidden dark:block transition-transform duration-500" 
+                  className="h-full w-auto object-contain hidden dark:block logo-premium-glow" 
                 />
               </div>
             </div>

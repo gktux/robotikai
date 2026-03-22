@@ -18,9 +18,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "ROBOTIKAI",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cms = await readCmsWithLocale();
+  return {
+    title: cms.site.brandName,
+  };
+}
 
 export default async function RootLayout({
   children,
