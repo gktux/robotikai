@@ -80,6 +80,10 @@ export function SecurityDashboard({ initialLogs }: { initialLogs: SecurityLog[] 
                           <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-2.5 py-1 text-[10px] font-black uppercase text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
                              Kısıtlı (15dk)
                           </span>
+                        ) : log.count === 0 ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-black uppercase text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400">
+                            Başarılı Giriş
+                          </span>
                         ) : (
                           <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-black uppercase text-blue-500 dark:bg-blue-900/20 dark:text-blue-400">
                             İzleniyor
@@ -87,7 +91,7 @@ export function SecurityDashboard({ initialLogs }: { initialLogs: SecurityLog[] 
                         )}
                       </td>
                       <td className="px-6 py-4 font-black text-slate-500 text-xs">
-                        {log.count}
+                        {log.count === 0 ? "-" : log.count}
                       </td>
                       <td className="px-6 py-4 text-[11px] text-slate-500 font-medium">
                         {new Date(log.lastAttempt).toLocaleString('tr-TR')}

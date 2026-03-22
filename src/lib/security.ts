@@ -114,10 +114,19 @@ export async function logFailedAttempt() {
 export async function resetAttempts() {
   const ip = await getClientIp();
   const logs = readLogs();
-  if (logs[ip]) {
-    delete logs[ip];
-    saveLogs(logs);
+  
+  if (!logs[ip]) {
+    logs[ip] = {
+      count: 0,
+      lastAttempt: Date.now()
+    };
+  } else {
+    logs[ip].count = 0;
+    logs[ip].blockedUntil = undefined;
+    logs[ip].lastAttempt = Date.now();
   }
+  
+  saveLogs(logs);
 }
 
 // Support for Dashboard
