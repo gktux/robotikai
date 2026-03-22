@@ -17,16 +17,20 @@ export function middleware(request: NextRequest) {
     response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
   }
 
-  // Protect only /admin routes
+  // Protect all /admin routes
   if (path.startsWith("/admin")) {
+    // allow access to login page
     if (path === "/admin/login") {
       return response;
     }
 
     const session = request.cookies.get("robotikai_admin");
 
-    if (!session || session.value !== "authenticated") {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
+    // Block if session is missing, empty, or uses the old insecure value
+    if (!session || !session.value || session.value === "authenticated") {
+      // Correctly handle the redirect for all admin paths
+      const loginUrl = new URL("/admin/login", request.url);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
@@ -34,5 +38,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*"],
 };

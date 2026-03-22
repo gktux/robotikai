@@ -141,16 +141,22 @@ export function CoursesManager({
               </div>
               
               <div className="flex justify-between items-center pt-2 gap-4">
-                <form action={handleDelete} className="contents">
-                    <input type="hidden" name="id" value={course.id} />
-                    <button
-                        type="submit"
-                        className="text-[11px] font-black text-red-500 hover:text-red-600 transition-colors flex items-center gap-1.5 uppercase tracking-widest px-2 group"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform"><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /></svg>
-                        Tamamen Sil
-                    </button>
-                </form>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const fd = new FormData();
+                    fd.append("id", course.id.toString());
+                    handleDelete(fd);
+                  }}
+                  className="text-[11px] font-black text-red-500 hover:text-red-600 transition-colors flex items-center gap-1.5 uppercase tracking-widest px-2 group"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform">
+                    <path d="M3 6h18" />
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  </svg>
+                  Tamamen Sil
+                </button>
                 <button
                   type="submit"
                   className="rounded-full bg-emerald-500 px-8 py-3 text-xs font-black text-white transition hover:bg-emerald-400 shadow-lg shadow-emerald-500/20 active:scale-95 flex items-center gap-2"

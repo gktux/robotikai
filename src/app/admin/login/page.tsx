@@ -32,6 +32,19 @@ export default function AdminLoginPage() {
           </div>
         )}
 
+        {error === "blocked" && (
+          <div className="mb-6 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-orange-700 flex items-start gap-3 animate-fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div>
+              <p className="font-bold">Güvenlik Kısıtlaması</p>
+              <p className="text-xs">Çok fazla hatalı deneme yapıldı. Güvenliğiniz için bu IP adresi geçici olarak engellenmiştir.</p>
+              {searchParams.get("retryIn") && (
+                <p className="mt-1 text-[10px] font-black uppercase text-orange-800/60">Yaklaşık {searchParams.get("retryIn")} dakika sonra tekrar deneyebilirsiniz.</p>
+              )}
+            </div>
+          </div>
+        )}
+
         <form action={loginAdmin} className="space-y-5">
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-neutral-700 ml-1" htmlFor="username">
