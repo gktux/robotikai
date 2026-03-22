@@ -41,6 +41,16 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             Ana Sayfa & Hakkında
           </Link>
           <Link
+            href="/admin/security"
+            className={`block rounded-lg px-3 py-2 transition ${
+              pathname?.startsWith("/admin/security")
+                ? "bg-sky-50 font-semibold text-sky-700 dark:bg-sky-900/30 dark:text-sky-400"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
+            }`}
+          >
+            Güvenlik İzleme
+          </Link>
+          <Link
             href="/admin/settings"
             className={`block rounded-lg px-3 py-2 transition ${
               pathname?.startsWith("/admin/settings")
