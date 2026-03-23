@@ -102,12 +102,6 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
                 <ThemeToggle />
               </div>
               <CartLink />
-              <Link
-                href="/admin/login"
-                className="hidden md:flex items-center justify-center rounded-full border border-cyan-500/40 bg-gradient-to-r from-teal-500 to-cyan-500 px-4 py-1.5 text-[11px] font-bold text-white shadow-[0_4px_15px_rgba(20,184,166,0.3)] transition-all hover:scale-105 hover:shadow-[0_8px_25px_rgba(20,184,166,0.4)]"
-              >
-                Admin
-              </Link>
               
               {/* Hamburger Button */}
               <button 
@@ -146,14 +140,6 @@ export function Header({ cms, locale }: { cms: any, locale: "tr" | "en" }) {
                 <ThemeToggle />
               </div>
             </div>
-
-            <Link 
-              href="/admin/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 block px-6 py-4 rounded-2xl bg-indigo-50 text-[15px] font-bold text-indigo-700 hover:bg-indigo-100 transition-all text-center dark:bg-indigo-950/50 dark:text-indigo-400 dark:hover:bg-indigo-900/50"
-            >
-              Yönetici Paneli (Admin)
-            </Link>
           </div>
         </div>
       </header>
