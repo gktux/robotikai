@@ -264,12 +264,16 @@ export default async function Home() {
                         <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent skew-x-[45deg] transition-all duration-700 group-hover:left-[150%]" />
                       </div>
 
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name}
-                        className="max-h-16 max-w-[70%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-105 animate-autonomous-glow"
-                        style={{ animationDelay: `${randomDelay}s`, animationDuration: `${8 + (idx % 5)}s` }}
-                      />
+                      <div className="relative p-6 flex items-center justify-center rounded-[2rem] bg-indigo-500/5 dark:bg-white/5 backdrop-blur-sm">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name}
+                          className={`max-h-16 max-w-[70%] object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110 animate-autonomous-glow drop-shadow-md ${
+                            partner.name.toLowerCase().includes("siberay") ? "" : "grayscale"
+                          } group-hover:grayscale-0`}
+                          style={{ animationDelay: `${randomDelay}s`, animationDuration: `${8 + (idx % 5)}s` }}
+                        />
+                      </div>
                       
                       {/* Tooltip-like name label */}
                       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">

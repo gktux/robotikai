@@ -317,6 +317,12 @@
         "name": "BİLİM FORMULU",
         "logo": "https://bilimformulu.com/wp-content/uploads/2020/01/1.png",
         "link": "https://bilimformulu.com/"
+      },
+      {
+        "id": 6,
+        "name": "SİBERAY",
+        "logo": "https://www.siberay.com/kurumlar/Siberay.com/Tasarim/siberay-logo_03.png",
+        "link": "https://www.siberay.com/"
       }
     ]
   }
